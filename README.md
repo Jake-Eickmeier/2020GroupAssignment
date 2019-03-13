@@ -2,6 +2,7 @@
 CSCI 2020U Final group project
 
 IDEAS:
+
 	For multiplayer:
 	 - Create or join rooms
 	 - Room is a gridpane with axb slots, people instantiated randomly in free slot
