@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -22,15 +23,17 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.Animation;
 import javafx.scene.image.Image;
+import javafx.geometry.Pos;
 
-public class MainClass extends Application{
+public class CustomizeTest extends Application{
   @Override
   public void start(Stage primaryStage){
     BorderPane menuMain = new BorderPane();
     menuMain.setStyle("-fx-background-color: violet;");
     Pane aviPane = new Pane();
     aviPane.setStyle("-fx-background-color: yellow;");
-    Pane selectPane = new Pane();
+    GridPane selectPane = new GridPane();
+    selectPane.setAlignment(Pos.CENTER);
     selectPane.setStyle("-fx-background-color: pink;");
 
 
@@ -49,8 +52,8 @@ public class MainClass extends Application{
     /*t3.start();
     */
 
-    MenuSelect selectM = new MenuSelect(selectPane);
-    Thread t2 = new Thread(selectM);
+    Customize cust = new Customize(selectPane,avt1);
+    Thread t2 = new Thread(cust);
     t2.start();
 
     /*Circle temp = avt1.getMainCircleArea();
@@ -60,8 +63,8 @@ public class MainClass extends Application{
     */
     avt1.setImgEye(new Image("res/e4.png"));
 
-    menuMain.setLeft(aviPane);
-    menuMain.setCenter(selectPane);
+    menuMain.setCenter(aviPane);
+    menuMain.setRight(selectPane);
 
     primaryStage.setTitle(" ");
     primaryStage.setScene(new Scene(menuMain, 1200, 600));

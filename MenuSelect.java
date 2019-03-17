@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.animation.Animation;
+import javafx.application.Platform;
 
 public class MenuSelect implements Runnable{
   Rectangle item1;
@@ -98,28 +99,30 @@ public class MenuSelect implements Runnable{
     pt3.setAutoReverse(false);
 
     setup = new Timeline(
-    new KeyFrame(Duration.millis(550), event -> {pt3.pause();
-    st3.pause();
-    pt2.pause();
-    st2.pause();
-    pt1.pause();
-    st1.pause();}));
+    new KeyFrame(Duration.millis(650), event -> {pt3.pause();
+      st3.pause();
+      pt2.pause();
+      st2.pause();
+      pt1.pause();
+      st1.pause();
+    }));
 
     select = new Timeline(
     new KeyFrame(Duration.seconds(0), event -> {
-    pt1.play();
-    st1.play();
-    pt2.play();
-    st2.play();
-    pt3.play();
-    st3.play();}),
-    new KeyFrame(Duration.millis(999), event -> {
-    pt1.pause();
-    st1.pause();
-    pt2.pause();
-    st2.pause();
-    pt3.pause();
-    st3.pause();
+      pt1.play();
+      st1.play();
+      pt2.play();
+      st2.play();
+      pt3.play();
+      st3.play();
+    }),
+    new KeyFrame(Duration.millis(1000), event -> {
+      pt1.pause();
+      st1.pause();
+      pt2.pause();
+      st2.pause();
+      pt3.pause();
+      st3.pause();
     }));
     select.setCycleCount(1);
     Rectangle[] temp = {item1,item2,item3};
@@ -131,54 +134,60 @@ public class MenuSelect implements Runnable{
 
   @Override
   public void run(){
-    pane.getChildren().add(menuPath);
-    pane.getChildren().add(item1);
-    pane.getChildren().add(item2);
-    pane.getChildren().add(item3);
-    item2.toFront();
 
-    pt1.play();
-    st1.play();
-    try
-    {
-      Thread.sleep(1000);
-    }
-    catch(InterruptedException ex)
-    {
-      Thread.currentThread().interrupt();
-    }
-    pt2.play();
-    st2.play();
-    try
-    {
-      Thread.sleep(1000);
-    }
-    catch(InterruptedException ex)
-    {
-      Thread.currentThread().interrupt();
-    }
-    pt3.play();
-    st3.play();
+    Platform.runLater(() -> {
 
-    setup.play();
+      pane.getChildren().add(menuPath);
+      pane.getChildren().add(item1);
+      pane.getChildren().add(item2);
+      pane.getChildren().add(item3);
+      item2.toFront();
+
+      pt1.play();
+      st1.play();
+      try
+      {
+        Thread.sleep(1000);
+      }
+      catch(InterruptedException ex)
+      {
+        Thread.currentThread().interrupt();
+      }
+      pt2.play();
+      st2.play();
+      try
+      {
+        Thread.sleep(1000);
+      }
+      catch(InterruptedException ex)
+      {
+        Thread.currentThread().interrupt();
+      }
+      pt3.play();
+      st3.play();
+
+      setup.play();
 
 
-    pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-      @Override
-      public void handle(KeyEvent e){
-        switch (e.getCode()) {
-          case DOWN: {select.play();
-            if (select.getCurrentTime() == Duration.seconds(0)){
-              iSelect.incItem();
-              items[iSelect.getItem()].toFront();
+      pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        @Override
+        public void handle(KeyEvent e){
+          switch (e.getCode()) {
+            case DOWN: {select.play();
+              if (select.getCurrentTime() == Duration.seconds(0)){
+                iSelect.incItem();
+                items[iSelect.getItem()].toFront();
+              }
+              break;
             }
-            break;}
           }
         }
       });
 
+    });
 
-    }
+
+  }
 
   public int getISelect(){
     return iSelect.getItem();

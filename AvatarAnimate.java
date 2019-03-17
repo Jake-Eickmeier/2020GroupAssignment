@@ -8,27 +8,35 @@ import javafx.scene.shape.Ellipse;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.application.Platform;
+
 
 public class AvatarAnimate implements Runnable{
   Avatar avtr;
   Pane pane;
-  public AvatarAnimate(Avatar avt, Pane p){
+  Pane getmousepane;
+  public AvatarAnimate(Avatar avt, Pane p,Pane x){
     avtr = avt;
     pane = p;
+    getmousepane = x;
   }
 
   @Override
   public void run(){
+
+    Platform.runLater(() -> {
 
     pane.getChildren().add(avtr.getMainCircleArea());
     pane.getChildren().add(avtr.getHead());
     pane.getChildren().add(avtr.getImgMouthView());
     pane.getChildren().add(avtr.getEye1());
     pane.getChildren().add(avtr.getEye2());
+    pane.getChildren().add(avtr.getImgEyeView());
     pane.getChildren().add(avtr.getPupil1());
     pane.getChildren().add(avtr.getPupil2());
 
-    pane.setOnMouseMoved(e -> {
+
+    getmousepane.setOnMouseMoved(e -> {
       double xd = (e.getX()-avtr.getMainCircleArea().getCenterX());
       double yd = (e.getY()-avtr.getMainCircleArea().getCenterY());
       double dnorm = Math.sqrt(Math.pow(xd,2)+Math.pow(yd,2));
@@ -49,6 +57,10 @@ public class AvatarAnimate implements Runnable{
       c1.setCenterX(-x+avtr.getMainCircleArea().getCenterX());
       c1.setCenterY(-y+avtr.getMainCircleArea().getCenterY());
       avtr.setHead(c1);
+
+      ImageView r1 = avtr.getImgEyeView();
+      r1.setX(x/2+avtr.getMainCircleArea().getCenterX()-50);
+      r1.setY(y/2+avtr.getMainCircleArea().getCenterY()-40);
 
       ImageView r2 = avtr.getImgMouthView();
       r2.setX(x/2+avtr.getMainCircleArea().getCenterX()-30);
@@ -72,6 +84,11 @@ public class AvatarAnimate implements Runnable{
         e1.setRadiusY(25);
         e2.setRadiusY(25);
       }
+      if (r1.getY() < avtr.getCenterYMain()-40){
+        r1.setFitHeight(40+(r1.getY()-avtr.getCenterYMain()+40));
+      }else{
+        r1.setFitHeight(40);
+      }
       if (r2.getY() > avtr.getCenterYMain()+10){
         r2.setFitHeight(30-(r2.getY()-avtr.getCenterYMain()-10));
       }else{
@@ -90,6 +107,7 @@ public class AvatarAnimate implements Runnable{
       avtr.setPupil1(pup1);
       avtr.setPupil2(pup2);
 
+    });
     });
   }
   private int[] place(int x, int y, Ellipse eye1, Ellipse eye2){
@@ -130,4 +148,5 @@ public class AvatarAnimate implements Runnable{
 
 
   }
+
 }

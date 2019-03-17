@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 public class Avatar{
   Image imgMouth;
   ImageView imgMouthView;
+  Image imgEye;
+  ImageView imgEyeView;
   double hue;
   double saturation;
   double brightness;
@@ -34,7 +36,7 @@ public class Avatar{
 
 
     head = new Circle(centerXMain,centerYMain,50);
-    head.setStroke(Color.RED);
+    head.setStroke(Color.TRANSPARENT);
     head.setFill(Color.RED);
 
     pupil1 = new Circle(centerXMain-25,centerYMain-20,5);
@@ -46,24 +48,27 @@ public class Avatar{
     pupil2.setFill(Color.BLACK);
 
     eye1 = new Ellipse(centerXMain-25,centerYMain-20,25,25);
-    eye1.setStroke(Color.BLACK);
-    eye1.setFill(Color.WHITE);
+    eye1.setStroke(Color.TRANSPARENT);
+    eye1.setFill(Color.TRANSPARENT);
 
     eye2 = new Ellipse(centerXMain+25,centerYMain-20,25,25);
-    eye2.setStroke(Color.BLACK);
-    eye2.setFill(Color.WHITE);
-
-    hue = 1900;
+    eye2.setStroke(Color.TRANSPARENT);
+    eye2.setFill(Color.TRANSPARENT);
 
     /*
     Image imgEye = new Image("res/ey.png");
     ImageView r1 = new ImageView(imgEye);
     */
 
-    imgMouth = new Image("res/m2.png");
+    imgMouth = new Image("res/m1.png");
     imgMouthView  = new ImageView(imgMouth);
     imgMouthView.setX(centerXMain-30);
     imgMouthView.setY(centerYMain+10);
+
+    imgEye = new Image("res/e2.png");
+    imgEyeView  = new ImageView(imgEye);
+    imgEyeView.setX(centerXMain-50);
+    imgEyeView.setY(centerYMain-40);
 
     /*
     Rectangle r1 = new Rectangle(150,160,100,40);
@@ -101,8 +106,8 @@ public class Avatar{
   public ImageView getImgMouthView(){
     return imgMouthView;
   }
-  public double getHue(){
-    return hue;
+  public ImageView getImgEyeView(){
+    return imgEyeView;
   }
   public double getCenterXMain(){
     return centerXMain;
@@ -137,8 +142,20 @@ public class Avatar{
   public void setImgMouthView(ImageView imv){
     imgMouthView = imv;
   }
-  public void setHue(double hu){
-    hue = hu;
+  public void setImgEyeView(ImageView imv){
+    imgEyeView = imv;
+  }
+  public void setImgMouth(Image imv){
+    imgMouth = imv;
+    this.getImgMouthView().setImage(imgMouth);
+  }
+  public void setImgEye(Image imv){
+    imgEye = imv;
+    this.getImgEyeView().setImage(imgEye);
+  }
+  public void setColor(Color color){
+    col = color;
+    head.setFill(col);
   }
 
 
