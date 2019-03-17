@@ -34,11 +34,21 @@ public class MainClass extends Application{
 
 
 
-    Avatar avt1 = new Avatar();
+    Avatar avt1 = new Avatar(200,200);
     AvatarAnimate ani1 = new AvatarAnimate(avt1, aviPane);
     Thread t1 = new Thread(ani1);
+    /*
+    Avatar avt2 = new Avatar(200,200);
+    AvatarAnimate ani2 = new AvatarAnimate(avt2, aviPane);
+    Thread t3 = new Thread(ani2);
+    */
     t1.start();
+    /*
+    }catch (InterruptedException e){
 
+    }
+
+    t3.start();*/
 
     MenuSelect selectM = new MenuSelect(selectPane);
     Thread t2 = new Thread(selectM);

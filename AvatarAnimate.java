@@ -65,15 +65,15 @@ public class AvatarAnimate implements Runnable{
       e2.setCenterY(y/2+avtr.getMainCircleArea().getCenterY()-20);
 
 
-      if (e2.getCenterY() < 180){
-        e1.setRadiusY(25+(e2.getCenterY()-180));
-        e2.setRadiusY(25+(e2.getCenterY()-180));
+      if (e2.getCenterY() < avtr.getCenterYMain()-20){
+        e1.setRadiusY(25+(e2.getCenterY()-avtr.getCenterYMain()+20));
+        e2.setRadiusY(25+(e2.getCenterY()-avtr.getCenterYMain()+20));
       }else{
         e1.setRadiusY(25);
         e2.setRadiusY(25);
       }
-      if (r2.getY() > 210){
-        r2.setFitHeight(30-(r2.getY()-210));
+      if (r2.getY() > avtr.getCenterYMain()+10){
+        r2.setFitHeight(30-(r2.getY()-avtr.getCenterYMain()-10));
       }else{
         r2.setFitHeight(30);
       }
