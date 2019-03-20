@@ -38,8 +38,8 @@ public class Customize implements Runnable{
   public Customize(GridPane p, Avatar avt){
     pane = p;
     avtr = avt;
-    mi = new MouthIndex(6);
-    ei = new EyeIndex(4);
+    mi = new MouthIndex(5);
+    ei = new EyeIndex(5);
     btnMouthLeft = new Button("Left");
     btnMouthRight= new Button("Right");
     btnEyeLeft= new Button("Left");
@@ -70,6 +70,20 @@ public class Customize implements Runnable{
         mi.incUpMIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgMouth(new Image(String.format("res/m%d.png",mi.getMIndex())));
+
+
+      });
+      btnEyeLeft.setOnAction(e->{
+        ei.incDownEIndex();
+        //System.out.println(mi.getMIndex());
+        avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
+
+
+      });
+      btnEyeRight.setOnAction(e->{
+        ei.incUpEIndex();
+        //System.out.println(mi.getMIndex());
+        avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
 
 
       });

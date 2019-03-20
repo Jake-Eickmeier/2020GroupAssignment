@@ -31,10 +31,10 @@ public class CustomizeTest extends Application{
     BorderPane menuMain = new BorderPane();
     menuMain.setStyle("-fx-background-color: violet;");
     Pane aviPane = new Pane();
-    aviPane.setStyle("-fx-background-color: yellow;");
+    aviPane.setStyle("-fx-background-color: transparent;");
     GridPane selectPane = new GridPane();
     selectPane.setAlignment(Pos.CENTER);
-    selectPane.setStyle("-fx-background-color: pink;");
+    selectPane.setStyle("-fx-background-color: transparent;");
 
 
 

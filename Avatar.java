@@ -26,6 +26,7 @@ public class Avatar{
   Color col;
   double centerXMain;
   double centerYMain;
+  Boolean isGlasses;
 
   public Avatar(double mainX, double mainY){
     centerXMain = mainX;
@@ -64,11 +65,16 @@ public class Avatar{
     imgMouthView  = new ImageView(imgMouth);
     imgMouthView.setX(centerXMain-30);
     imgMouthView.setY(centerYMain+10);
+    imgMouthView.setFitHeight(30);
+    imgMouthView.setFitWidth(60);
 
     imgEye = new Image("res/e2.png");
     imgEyeView  = new ImageView(imgEye);
     imgEyeView.setX(centerXMain-50);
     imgEyeView.setY(centerYMain-40);
+    imgEyeView.setFitHeight(40);
+    imgEyeView.setFitWidth(100);
+
 
     /*
     Rectangle r1 = new Rectangle(150,160,100,40);

@@ -27,11 +27,11 @@ public class MainClass extends Application{
   @Override
   public void start(Stage primaryStage){
     BorderPane menuMain = new BorderPane();
-    menuMain.setStyle("-fx-background-color: violet;");
+    menuMain.setStyle("-fx-background-color: pink;");
     Pane aviPane = new Pane();
-    aviPane.setStyle("-fx-background-color: yellow;");
+    aviPane.setStyle("-fx-background-color: transparent;");
     Pane selectPane = new Pane();
-    selectPane.setStyle("-fx-background-color: pink;");
+    selectPane.setStyle("-fx-background-color: transparent;");
 
 
 
@@ -64,7 +64,7 @@ public class MainClass extends Application{
     menuMain.setCenter(selectPane);
 
     primaryStage.setTitle(" ");
-    primaryStage.setScene(new Scene(menuMain, 1200, 600));
+    primaryStage.setScene(new Scene(menuMain, 1000, 600));
     primaryStage.show();
     selectPane.requestFocus();
 

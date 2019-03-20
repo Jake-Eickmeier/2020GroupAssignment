@@ -42,7 +42,7 @@ public class MenuSelect implements Runnable{
 
   public MenuSelect(Pane p){
     pane = p;
-    menuPath = new Ellipse(300,300,50,200);
+    menuPath = new Ellipse(200,300,50,200);
     menuPath.setFill(Color.TRANSPARENT);
     menuPath.setStroke(Color.BLACK);
     item1 = new Rectangle (100, 40, 100, 100);
