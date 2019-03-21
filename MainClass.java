@@ -1,17 +1,17 @@
 import javafx.animation.*;
 import javafx.application.Application;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.image.Image;
+import javafx.util.Duration;
 
 public class MainClass extends Application{
   @Override

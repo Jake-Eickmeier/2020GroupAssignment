@@ -1,16 +1,16 @@
-import javafx.animation.*;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.application.Platform;
+import javafx.util.Duration;
+import javafx.animation.*;
 
 public class MenuSelect implements Runnable{
   Rectangle item1, item2, item3;

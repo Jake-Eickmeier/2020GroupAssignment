@@ -1,15 +1,14 @@
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 import javafx.scene.text.Text;
-import javafx.geometry.Pos;
-import javafx.scene.image.*;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.geometry.Pos;
 
 public class Customize implements Runnable{
   GridPane pane;
