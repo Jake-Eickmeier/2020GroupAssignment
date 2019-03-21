@@ -24,7 +24,8 @@ public class Avatar{
   Boolean isGlasses;
 
   public Avatar(double mainX, double mainY){
-    centerXMain = mainX, mainY;
+    centerXMain = mainX;
+    centerYMain = mainY;
     mainCircleArea = new Circle(centerXMain,centerYMain,150);
     mainCircleArea.setStroke(Color.BLACK);
     mainCircleArea.setFill(Color.WHITE);

@@ -1,35 +1,20 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.geometry.Pos;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.DatePicker;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.application.Application;
-import javafx.scene.Scene;
+import javafx.scene.image.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.shape.*;
 import javafx.application.Platform;
 
 public class Customize implements Runnable{
   GridPane pane;
   Avatar avtr;
-  Button btnMouthLeft;
-  Button btnMouthRight;
-  Button btnEyeLeft;
-  Button btnEyeRight;
+  Button btnMouthLeft, btnMouthRight, btnEyeLeft, btnEyeRight;
   ColorPicker colpick;
   Color col;
   MouthIndex mi;
@@ -98,8 +83,7 @@ public class Customize implements Runnable{
 
 }
 class MouthIndex{
-  int ind;
-  int maxind;
+  int ind, maxind;
   public MouthIndex(int maxIndex){
     ind = 1;
     maxind = maxIndex;
@@ -124,8 +108,7 @@ class MouthIndex{
   }
 }
 class EyeIndex{
-  int ind;
-  int maxind;
+  int ind, maxind;
   public EyeIndex(int maxIndex){
     ind = 1;
     maxind = maxIndex;
