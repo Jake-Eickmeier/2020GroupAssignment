@@ -40,10 +40,9 @@ public class AvatarAnimate implements Runnable{
       double xd = (e.getX()-avtr.getMainCircleArea().getCenterX());
       double yd = (e.getY()-avtr.getMainCircleArea().getCenterY());
       double dnorm = Math.sqrt(Math.pow(xd,2)+Math.pow(yd,2));
-      double xu = xd/dnorm;
-      double yu = yd/dnorm;
-      int x;
-      int y;
+      double xu = xd/dnorm, yu = yd/dnorm;
+      int x, y;
+
       if (dnorm >= avtr.getMainCircleArea().getRadius()){
         x = (int)(Math.floor(10*xu));
         y = (int)(Math.floor(10*yu));
@@ -98,8 +97,7 @@ public class AvatarAnimate implements Runnable{
       avtr.setEye1(e1);
       avtr.setEye2(e2);
       int[] f = place((int)e.getX(),(int)e.getY(),e1,e2);
-      Circle pup1 = avtr.getPupil1();
-      Circle pup2 = avtr.getPupil2();
+      Circle pup1 = avtr.getPupil1(), pup2 = avtr.getPupil2();
       pup1.setCenterX(f[0]);
       pup1.setCenterY(f[1]);
       pup2.setCenterX(f[2]);
@@ -112,20 +110,14 @@ public class AvatarAnimate implements Runnable{
   }
   private int[] place(int x, int y, Ellipse eye1, Ellipse eye2){
 
-    double xd1 = (x-eye1.getCenterX());
-    double yd1 = (y-eye1.getCenterY());
-    double xd2 = (x-eye2.getCenterX());
-    double yd2 = (y-eye2.getCenterY());
+    double xd1 = (x-eye1.getCenterX()), yd1 = (y-eye1.getCenterY());
+    double xd2 = (x-eye2.getCenterX()), yd2 = (y-eye2.getCenterY());
     double dnorm1 = Math.sqrt(Math.pow(xd1,2)+Math.pow(yd1,2));
-    double xu1 = xd1/dnorm1;
-    double yu1 = yd1/dnorm1;
+    double xu1 = xd1/dnorm1, yu1 = yd1/dnorm1;
     double dnorm2 = Math.sqrt(Math.pow(xd2,2)+Math.pow(yd2,2));
-    double xu2 = xd2/dnorm2;
-    double yu2 = yd2/dnorm2;
-    int ex1;
-    int ey1;
-    int ex2;
-    int ey2;
+    double xu2 = xd2/dnorm2, yu2 = yd2/dnorm2;
+    int ex1, ey1, ex2, ey2;
+
     if (dnorm1 >= 25){
       ex1 = (int)((Math.floor(12.5*xu1))+eye1.getCenterX());
       ey1 = (int)((Math.floor(12.5*yu1))+eye1.getCenterY());

@@ -14,23 +14,17 @@ public class Avatar{
   ImageView imgMouthView;
   Image imgEye;
   ImageView imgEyeView;
-  double hue;
-  double saturation;
-  double brightness;
+  double hue, saturation, brightness;
   Circle head;
-  Ellipse eye1;
-  Ellipse eye2;
-  Circle pupil1;
-  Circle pupil2;
+  Ellipse eye1, eye2;
+  Circle pupil1, pupil2;
   Circle mainCircleArea;
   Color col;
-  double centerXMain;
-  double centerYMain;
+  double centerXMain, centerYMain;
   Boolean isGlasses;
 
   public Avatar(double mainX, double mainY){
-    centerXMain = mainX;
-    centerYMain = mainY;
+    centerXMain = mainX, mainY;
     mainCircleArea = new Circle(centerXMain,centerYMain,150);
     mainCircleArea.setStroke(Color.BLACK);
     mainCircleArea.setFill(Color.WHITE);
