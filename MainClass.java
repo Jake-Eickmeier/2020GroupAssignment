@@ -23,8 +23,6 @@ public class MainClass extends Application{
     Pane selectPane = new Pane();
     selectPane.setStyle("-fx-background-color: transparent;");
 
-
-
     Avatar avt1 = new Avatar(200,200);
     AvatarAnimate ani1 = new AvatarAnimate(avt1, aviPane,menuMain);
     Thread t1 = new Thread(ani1);
@@ -57,15 +55,9 @@ public class MainClass extends Application{
     primaryStage.setScene(new Scene(menuMain, 1000, 600));
     primaryStage.show();
     selectPane.requestFocus();
-
-
-
-
-
-
   }
+
   public static void main(String[] args){
     launch(args);
   }
-
 }

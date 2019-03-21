@@ -26,8 +26,6 @@ public class CustomizeTest extends Application{
     selectPane.setAlignment(Pos.CENTER);
     selectPane.setStyle("-fx-background-color: transparent;");
 
-
-
     Avatar avt1 = new Avatar(200,200);
     AvatarAnimate ani1 = new AvatarAnimate(avt1, aviPane,menuMain);
     Thread t1 = new Thread(ani1);
@@ -60,15 +58,9 @@ public class CustomizeTest extends Application{
     primaryStage.setScene(new Scene(menuMain, 1200, 600));
     primaryStage.show();
     selectPane.requestFocus();
-
-
-
-
-
-
   }
+
   public static void main(String[] args){
     launch(args);
   }
-
 }

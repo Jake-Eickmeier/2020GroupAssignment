@@ -30,7 +30,6 @@ public class Avatar{
     mainCircleArea.setStroke(Color.BLACK);
     mainCircleArea.setFill(Color.WHITE);
 
-
     head = new Circle(centerXMain,centerYMain,50);
     head.setStroke(Color.TRANSPARENT);
     head.setFill(Color.RED);
@@ -69,7 +68,6 @@ public class Avatar{
     imgEyeView.setY(centerYMain-40);
     imgEyeView.setFitHeight(40);
     imgEyeView.setFitWidth(100);
-
 
     /*
     Rectangle r1 = new Rectangle(150,160,100,40);
@@ -113,7 +111,6 @@ public class Avatar{
   public double getCenterXMain(){
     return centerXMain;
   }
-
   public double getCenterYMain(){
     return centerYMain;
   }

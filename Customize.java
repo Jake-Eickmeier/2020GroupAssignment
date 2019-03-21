@@ -26,9 +26,9 @@ public class Customize implements Runnable{
     mi = new MouthIndex(5);
     ei = new EyeIndex(5);
     btnMouthLeft = new Button("Left");
-    btnMouthRight= new Button("Right");
-    btnEyeLeft= new Button("Left");
-    btnEyeRight= new Button("Right");
+    btnMouthRight = new Button("Right");
+    btnEyeLeft = new Button("Left");
+    btnEyeRight = new Button("Right");
     colpick= new ColorPicker();
 
   }
@@ -48,40 +48,34 @@ public class Customize implements Runnable{
         mi.incDownMIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgMouth(new Image(String.format("res/m%d.png",mi.getMIndex())));
-
-
       });
+
       btnMouthRight.setOnAction(e->{
         mi.incUpMIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgMouth(new Image(String.format("res/m%d.png",mi.getMIndex())));
-
-
       });
+
       btnEyeLeft.setOnAction(e->{
         ei.incDownEIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
-
-
       });
+
       btnEyeRight.setOnAction(e->{
         ei.incUpEIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
-
-
       });
+
       colpick.setOnAction(e->{
         Color c = colpick.getValue();
         avtr.setColor(c);
       });
-
     });
   }
-
-
 }
+
 class MouthIndex{
   int ind, maxind;
   public MouthIndex(int maxIndex){
@@ -107,6 +101,7 @@ class MouthIndex{
     }
   }
 }
+
 class EyeIndex{
   int ind, maxind;
   public EyeIndex(int maxIndex){

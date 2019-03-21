@@ -50,8 +50,6 @@ public class MenuSelect implements Runnable{
     st1.setAutoReverse(true);
     st1.setNode(item1);
 
-
-
     st2 = new ScaleTransition(Duration.millis(1500));
     st2.setByX(1.5);
     st2.setByY(1.5);
@@ -82,12 +80,13 @@ public class MenuSelect implements Runnable{
     pt3.setAutoReverse(false);
 
     setup = new Timeline(
-    new KeyFrame(Duration.millis(650), event -> {pt3.pause();
-      st3.pause();
-      pt2.pause();
-      st2.pause();
+    new KeyFrame(Duration.millis(650), event -> {
       pt1.pause();
       st1.pause();
+      pt2.pause();
+      st2.pause();
+      pt3.pause();
+      st3.pause();
     }));
 
     select = new Timeline(
@@ -151,7 +150,6 @@ public class MenuSelect implements Runnable{
 
       setup.play();
 
-
       pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
         @Override
         public void handle(KeyEvent e){
@@ -166,18 +164,12 @@ public class MenuSelect implements Runnable{
           }
         }
       });
-
     });
-
-
   }
 
   public int getISelect(){
     return iSelect.getItem();
   }
-
-
-
 }
 
 class ItemSelect{
