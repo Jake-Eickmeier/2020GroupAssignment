@@ -16,7 +16,9 @@ import javafx.util.Duration;
 public class MainClass extends Application{
   @Override
   public void start(Stage primaryStage){
+
     BorderPane menuMain = new BorderPane();
+    BorderPane customizeMain = new BorderPane();
     menuMain.setStyle("-fx-background-color: pink;");
     Pane aviPane = new Pane();
     aviPane.setStyle("-fx-background-color: transparent;");
@@ -46,15 +48,43 @@ public class MainClass extends Application{
     avt1.setMainCircleArea(temp);
     System.out.println(avt1.getMainCircleArea().getCenterX());
     */
-    avt1.setImgEye(new Image("res/e4.png"));
 
     menuMain.setLeft(aviPane);
     menuMain.setCenter(selectPane);
 
+    Scene mainMenuScene = new Scene(menuMain,800,600);
+
+
+    //Customize cust = new Customize(selectPane,avt1);
+    //Thread customizeThread = new Thread(cust);
+    //customizeThread.start();
+
+    //menuMain.setCenter(aviPane);
+    //menuMain.setRight(selectPane);
+
+    //Scene customizeScene = new Scene();
+
     primaryStage.setTitle(" ");
-    primaryStage.setScene(new Scene(menuMain, 1000, 600));
+    primaryStage.setScene(mainMenuScene);
     primaryStage.show();
     selectPane.requestFocus();
+
+
+    selectPane.setOnKeyPressed(e -> {
+        switch (e.getCode()) {
+          case DOWN: {
+              selectM.animateToNext();
+              break;
+            }
+
+            case ENTER: {
+              System.out.println("Enter");
+              break;
+            }
+          }
+
+    });
+
   }
 
   public static void main(String[] args){

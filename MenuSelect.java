@@ -11,27 +11,48 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 import javafx.animation.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MenuSelect implements Runnable{
-  Rectangle item1, item2, item3;
+  ImageView item1, item2, item3;
+  //
   Ellipse menuPath;
   ScaleTransition st1, st2, st3;
   PathTransition pt1, pt2, pt3;
   Timeline setup, select;
   Pane pane;
   ItemSelect iSelect;
+  Image item1img;
 
-  Rectangle[] items;
+  ImageView[] items;
 
   public MenuSelect(Pane p){
     pane = p;
     menuPath = new Ellipse(200,300,50,200);
     menuPath.setFill(Color.TRANSPARENT);
     menuPath.setStroke(Color.BLACK);
+
+
+    item1img = new Image("test1.png");
+    item1 = new ImageView(item1img);
+    item1.setFitWidth(100);
+    item1.setFitHeight(100);
+
+    item2 = new ImageView(item1img);
+    item2.setFitWidth(100);
+    item2.setFitHeight(100);
+
+    item3 = new ImageView(item1img);
+    item3.setFitWidth(100);
+    item3.setFitHeight(100);
+
+    /*
     item1 = new Rectangle (100, 40, 100, 100);
     item1.setArcHeight(50);
     item1.setArcWidth(50);
     item1.setFill(Color.VIOLET);
+
     item2 = new Rectangle (100, 140, 100, 100);
     item2.setArcHeight(50);
     item2.setArcWidth(50);
@@ -40,6 +61,7 @@ public class MenuSelect implements Runnable{
     item3.setArcHeight(50);
     item3.setArcWidth(50);
     item3.setFill(Color.GREEN);
+    */
 
     iSelect = new ItemSelect();
 
@@ -107,7 +129,7 @@ public class MenuSelect implements Runnable{
       st3.pause();
     }));
     select.setCycleCount(1);
-    Rectangle[] temp = {item1,item2,item3};
+    ImageView[] temp = {item1,item2,item3};
     items = temp;
 
   }
@@ -150,25 +172,20 @@ public class MenuSelect implements Runnable{
 
       setup.play();
 
-      pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        @Override
-        public void handle(KeyEvent e){
-          switch (e.getCode()) {
-            case DOWN: {select.play();
-              if (select.getCurrentTime() == Duration.seconds(0)){
-                iSelect.incItem();
-                items[iSelect.getItem()].toFront();
-              }
-              break;
-            }
-          }
-        }
-      });
+
     });
   }
 
   public int getISelect(){
     return iSelect.getItem();
+  }
+
+  public void animateToNext(){
+    select.play();
+      if (select.getCurrentTime() == Duration.seconds(0)){
+        iSelect.incItem();
+        items[iSelect.getItem()].toFront();
+      }
   }
 }
 

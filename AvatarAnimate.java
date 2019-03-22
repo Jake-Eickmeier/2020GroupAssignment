@@ -49,18 +49,18 @@ public class AvatarAnimate implements Runnable{
 
         }
 
-        Circle c1 = avtr.getHead();
-        c1.setCenterX(-x+avtr.getMainCircleArea().getCenterX());
-        c1.setCenterY(-y+avtr.getMainCircleArea().getCenterY());
-        avtr.setHead(c1);
+        Circle head = avtr.getHead();
+        head.setCenterX(-x+avtr.getMainCircleArea().getCenterX());
+        head.setCenterY(-y+avtr.getMainCircleArea().getCenterY());
+        avtr.setHead(head);
 
-        ImageView r1 = avtr.getImgEyeView();
-        r1.setX(x/2+avtr.getMainCircleArea().getCenterX()-50);
-        r1.setY(y/2+avtr.getMainCircleArea().getCenterY()-40);
+        ImageView eyeimg = avtr.getImgEyeView();
+        eyeimg.setX(x/2+avtr.getMainCircleArea().getCenterX()-50);
+        eyeimg.setY(y/2+avtr.getMainCircleArea().getCenterY()-40);
 
-        ImageView r2 = avtr.getImgMouthView();
-        r2.setX(x/2+avtr.getMainCircleArea().getCenterX()-30);
-        r2.setY(y/2+avtr.getMainCircleArea().getCenterY()+10);
+        ImageView mouthimg = avtr.getImgMouthView();
+        mouthimg.setX(x/2+avtr.getMainCircleArea().getCenterX()-30);
+        mouthimg.setY(y/2+avtr.getMainCircleArea().getCenterY()+10);
 
         Ellipse e1 = avtr.getEye1();
         e1.setCenterX(x/2+avtr.getMainCircleArea().getCenterX()-25);
@@ -78,18 +78,18 @@ public class AvatarAnimate implements Runnable{
           e2.setRadiusY(25);
         }
 
-        if (r1.getY() < avtr.getCenterYMain()-40){
-          r1.setFitHeight(40+(r1.getY()-avtr.getCenterYMain()+40));
+        if (eyeimg.getY() < avtr.getCenterYMain()-40){
+          eyeimg.setFitHeight(40+(eyeimg.getY()-avtr.getCenterYMain()+40));
         }else{
-          r1.setFitHeight(40);
+          eyeimg.setFitHeight(40);
         }
-        if (r2.getY() > avtr.getCenterYMain()+10){
-          r2.setFitHeight(30-(r2.getY()-avtr.getCenterYMain()-10));
+        if (mouthimg.getY() > avtr.getCenterYMain()+10){
+          mouthimg.setFitHeight(30-(mouthimg.getY()-avtr.getCenterYMain()-10));
         }else{
-          r2.setFitHeight(30);
+          mouthimg.setFitHeight(30);
         }
 
-        avtr.setImgMouthView(r2);
+        avtr.setImgMouthView(mouthimg);
         avtr.setEye1(e1);
         avtr.setEye2(e2);
         int[] f = place((int)e.getX(),(int)e.getY(),e1,e2);
