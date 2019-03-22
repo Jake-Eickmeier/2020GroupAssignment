@@ -1,35 +1,19 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import javafx.geometry.Pos;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.DatePicker;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
-import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.application.Platform;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.scene.image.Image;
+import javafx.geometry.Pos;
 
 public class Customize implements Runnable{
   GridPane pane;
   Avatar avtr;
-  Button btnMouthLeft;
-  Button btnMouthRight;
-  Button btnEyeLeft;
-  Button btnEyeRight;
+  Button btnMouthLeft, btnMouthRight, btnEyeLeft, btnEyeRight;
   ColorPicker colpick;
   Color col;
   MouthIndex mi;
@@ -41,9 +25,9 @@ public class Customize implements Runnable{
     mi = new MouthIndex(5);
     ei = new EyeIndex(5);
     btnMouthLeft = new Button("Left");
-    btnMouthRight= new Button("Right");
-    btnEyeLeft= new Button("Left");
-    btnEyeRight= new Button("Right");
+    btnMouthRight = new Button("Right");
+    btnEyeLeft = new Button("Left");
+    btnEyeRight = new Button("Right");
     colpick= new ColorPicker();
 
   }
@@ -63,43 +47,36 @@ public class Customize implements Runnable{
         mi.incDownMIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgMouth(new Image(String.format("res/m%d.png",mi.getMIndex())));
-
-
       });
+
       btnMouthRight.setOnAction(e->{
         mi.incUpMIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgMouth(new Image(String.format("res/m%d.png",mi.getMIndex())));
-
-
       });
+
       btnEyeLeft.setOnAction(e->{
         ei.incDownEIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
-
-
       });
+
       btnEyeRight.setOnAction(e->{
         ei.incUpEIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
-
-
       });
+
       colpick.setOnAction(e->{
         Color c = colpick.getValue();
         avtr.setColor(c);
       });
-
     });
   }
-
-
 }
+
 class MouthIndex{
-  int ind;
-  int maxind;
+  int ind, maxind;
   public MouthIndex(int maxIndex){
     ind = 1;
     maxind = maxIndex;
@@ -123,9 +100,9 @@ class MouthIndex{
     }
   }
 }
+
 class EyeIndex{
-  int ind;
-  int maxind;
+  int ind, maxind;
   public EyeIndex(int maxIndex){
     ind = 1;
     maxind = maxIndex;

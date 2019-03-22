@@ -1,11 +1,11 @@
 import javafx.application.Application;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -14,18 +14,13 @@ public class Avatar{
   ImageView imgMouthView;
   Image imgEye;
   ImageView imgEyeView;
-  double hue;
-  double saturation;
-  double brightness;
+  double hue, saturation, brightness;
   Circle head;
-  Ellipse eye1;
-  Ellipse eye2;
-  Circle pupil1;
-  Circle pupil2;
+  Ellipse eye1, eye2;
+  Circle pupil1, pupil2;
   Circle mainCircleArea;
   Color col;
-  double centerXMain;
-  double centerYMain;
+  double centerXMain, centerYMain;
   Boolean isGlasses;
 
   public Avatar(double mainX, double mainY){
@@ -34,7 +29,6 @@ public class Avatar{
     mainCircleArea = new Circle(centerXMain,centerYMain,150);
     mainCircleArea.setStroke(Color.BLACK);
     mainCircleArea.setFill(Color.WHITE);
-
 
     head = new Circle(centerXMain,centerYMain,50);
     head.setStroke(Color.TRANSPARENT);
@@ -74,7 +68,6 @@ public class Avatar{
     imgEyeView.setY(centerYMain-40);
     imgEyeView.setFitHeight(40);
     imgEyeView.setFitWidth(100);
-
 
     /*
     Rectangle r1 = new Rectangle(150,160,100,40);
@@ -118,7 +111,6 @@ public class Avatar{
   public double getCenterXMain(){
     return centerXMain;
   }
-
   public double getCenterYMain(){
     return centerYMain;
   }

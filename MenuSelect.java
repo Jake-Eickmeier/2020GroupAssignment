@@ -1,40 +1,23 @@
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Line;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import javafx.scene.shape.Ellipse;
 import javafx.scene.input.KeyCode;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
+import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.animation.Animation;
-import javafx.application.Platform;
+import javafx.util.Duration;
+import javafx.animation.*;
 
 public class MenuSelect implements Runnable{
-  Rectangle item1;
-  Rectangle item2;
-  Rectangle item3;
+  Rectangle item1, item2, item3;
   Ellipse menuPath;
-  ScaleTransition st1;
-  PathTransition pt1;
-  ScaleTransition st2;
-  PathTransition pt2;
-  ScaleTransition st3;
-  PathTransition pt3;
-  Timeline setup;
-  Timeline select;
+  ScaleTransition st1, st2, st3;
+  PathTransition pt1, pt2, pt3;
+  Timeline setup, select;
   Pane pane;
   ItemSelect iSelect;
 
@@ -67,8 +50,6 @@ public class MenuSelect implements Runnable{
     st1.setAutoReverse(true);
     st1.setNode(item1);
 
-
-
     st2 = new ScaleTransition(Duration.millis(1500));
     st2.setByX(1.5);
     st2.setByY(1.5);
@@ -99,12 +80,13 @@ public class MenuSelect implements Runnable{
     pt3.setAutoReverse(false);
 
     setup = new Timeline(
-    new KeyFrame(Duration.millis(650), event -> {pt3.pause();
-      st3.pause();
-      pt2.pause();
-      st2.pause();
+    new KeyFrame(Duration.millis(650), event -> {
       pt1.pause();
       st1.pause();
+      pt2.pause();
+      st2.pause();
+      pt3.pause();
+      st3.pause();
     }));
 
     select = new Timeline(
@@ -168,7 +150,6 @@ public class MenuSelect implements Runnable{
 
       setup.play();
 
-
       pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
         @Override
         public void handle(KeyEvent e){
@@ -183,18 +164,12 @@ public class MenuSelect implements Runnable{
           }
         }
       });
-
     });
-
-
   }
 
   public int getISelect(){
     return iSelect.getItem();
   }
-
-
-
 }
 
 class ItemSelect{

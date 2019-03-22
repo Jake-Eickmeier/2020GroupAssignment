@@ -1,27 +1,17 @@
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.application.Application;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Line;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import javafx.scene.shape.Ellipse;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.animation.Animation;
-import javafx.scene.image.Image;
+import javafx.util.Duration;
 
 public class MainClass extends Application{
   @Override
@@ -32,8 +22,6 @@ public class MainClass extends Application{
     aviPane.setStyle("-fx-background-color: transparent;");
     Pane selectPane = new Pane();
     selectPane.setStyle("-fx-background-color: transparent;");
-
-
 
     Avatar avt1 = new Avatar(200,200);
     AvatarAnimate ani1 = new AvatarAnimate(avt1, aviPane,menuMain);
@@ -67,15 +55,9 @@ public class MainClass extends Application{
     primaryStage.setScene(new Scene(menuMain, 1000, 600));
     primaryStage.show();
     selectPane.requestFocus();
-
-
-
-
-
-
   }
+
   public static void main(String[] args){
     launch(args);
   }
-
 }

@@ -1,29 +1,19 @@
-import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Line;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
-import javafx.scene.shape.Ellipse;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.animation.Animation;
-import javafx.scene.image.Image;
 import javafx.geometry.Pos;
+import javafx.util.Duration;
+import javafx.animation.*;
 
 public class CustomizeTest extends Application{
   @Override
@@ -35,8 +25,6 @@ public class CustomizeTest extends Application{
     GridPane selectPane = new GridPane();
     selectPane.setAlignment(Pos.CENTER);
     selectPane.setStyle("-fx-background-color: transparent;");
-
-
 
     Avatar avt1 = new Avatar(200,200);
     AvatarAnimate ani1 = new AvatarAnimate(avt1, aviPane,menuMain);
@@ -70,15 +58,9 @@ public class CustomizeTest extends Application{
     primaryStage.setScene(new Scene(menuMain, 1200, 600));
     primaryStage.show();
     selectPane.requestFocus();
-
-
-
-
-
-
   }
+
   public static void main(String[] args){
     launch(args);
   }
-
 }
