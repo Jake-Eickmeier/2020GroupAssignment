@@ -5,14 +5,14 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.util.Duration;
 import javafx.animation.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class MenuSelect implements Runnable{
   ImageView item1, item2, item3;
@@ -66,67 +66,37 @@ public class MenuSelect implements Runnable{
     iSelect = new ItemSelect();
 
     st1 = new ScaleTransition(Duration.millis(1500));
-    st1.setByX(1.5);
-    st1.setByY(1.5);
-    st1.setCycleCount(Timeline.INDEFINITE);
-    st1.setAutoReverse(true);
-    st1.setNode(item1);
+    ScaleSetup(st1, item1);
 
     st2 = new ScaleTransition(Duration.millis(1500));
-    st2.setByX(1.5);
-    st2.setByY(1.5);
-    st2.setCycleCount(Timeline.INDEFINITE);
-    st2.setAutoReverse(true);
-    st2.setNode(item2);
+    ScaleSetup(st2, item2);
 
     st3 = new ScaleTransition(Duration.millis(1500));
-    st3.setByX(1.5);
-    st3.setByY(1.5);
-    st3.setCycleCount(Timeline.INDEFINITE);
-    st3.setAutoReverse(true);
-    st3.setNode(item3);
+    ScaleSetup(st3, item3);
 
     pt1 = new PathTransition(Duration.millis(3000),menuPath,item1);
-    pt1.setInterpolator(Interpolator.LINEAR);
-    pt1.setCycleCount(Timeline.INDEFINITE);
-    pt1.setAutoReverse(false);
+    PathSetup(pt1);
 
     pt2 = new PathTransition(Duration.millis(3000),menuPath,item2);
-    pt2.setInterpolator(Interpolator.LINEAR);
-    pt2.setCycleCount(Timeline.INDEFINITE);
-    pt2.setAutoReverse(false);
+    PathSetup(pt2);
 
     pt3 = new PathTransition(Duration.millis(3000),menuPath,item3);
-    pt3.setInterpolator(Interpolator.LINEAR);
-    pt3.setCycleCount(Timeline.INDEFINITE);
-    pt3.setAutoReverse(false);
+    PathSetup(pt3);
 
     setup = new Timeline(
     new KeyFrame(Duration.millis(650), event -> {
-      pt1.pause();
-      st1.pause();
-      pt2.pause();
-      st2.pause();
-      pt3.pause();
-      st3.pause();
+      pt1.pause(); pt2.pause(); pt3.pause();
+      st1.pause(); st2.pause(); st3.pause();
     }));
 
     select = new Timeline(
     new KeyFrame(Duration.seconds(0), event -> {
-      pt1.play();
-      st1.play();
-      pt2.play();
-      st2.play();
-      pt3.play();
-      st3.play();
+      pt1.play(); pt2.play(); pt3.play();
+      st1.play(); st2.play(); st3.play();
     }),
     new KeyFrame(Duration.millis(1000), event -> {
-      pt1.pause();
-      st1.pause();
-      pt2.pause();
-      st2.pause();
-      pt3.pause();
-      st3.pause();
+      pt1.pause(); pt2.pause(); pt3.pause();
+      st1.pause(); st2.pause(); st3.pause();
     }));
     select.setCycleCount(1);
     ImageView[] temp = {item1,item2,item3};
@@ -187,7 +157,22 @@ public class MenuSelect implements Runnable{
         items[iSelect.getItem()].toFront();
       }
   }
+
+  public void ScaleSetup(ScaleTransition st, ImageView item) {
+    st.setByX(1.5);
+    st.setByY(1.5);
+    st.setCycleCount(Timeline.INDEFINITE);
+    st.setAutoReverse(true);
+    st.setNode(item);
+  }
+
+  public void PathSetup(PathTransition pt) {
+    pt.setInterpolator(Interpolator.LINEAR);
+    pt.setCycleCount(Timeline.INDEFINITE);
+    pt.setAutoReverse(false);
+  }
 }
+
 
 class ItemSelect{
   int item;
