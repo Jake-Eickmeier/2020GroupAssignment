@@ -70,14 +70,6 @@ public class AvatarAnimate implements Runnable{
         e2.setCenterX(x/2+avtr.getMainCircleArea().getCenterX()+25);
         e2.setCenterY(y/2+avtr.getMainCircleArea().getCenterY()-20);
 
-        if (e2.getCenterY() < avtr.getCenterYMain()-20){
-          e1.setRadiusY(25+(e2.getCenterY()-avtr.getCenterYMain()+20));
-          e2.setRadiusY(25+(e2.getCenterY()-avtr.getCenterYMain()+20));
-        }else{
-          e1.setRadiusY(25);
-          e2.setRadiusY(25);
-        }
-
         if (eyeimg.getY() < avtr.getCenterYMain()-40){
           eyeimg.setFitHeight(40+(eyeimg.getY()-avtr.getCenterYMain()+40));
         }else{
@@ -104,6 +96,9 @@ public class AvatarAnimate implements Runnable{
     });
   }
 
+  public void setGetMousePane(Pane mpane){
+    getmousepane = mpane;
+  }
   private int[] place(int x, int y, Ellipse eye1, Ellipse eye2){
     double xd1 = (x-eye1.getCenterX()), yd1 = (y-eye1.getCenterY());
     double xd2 = (x-eye2.getCenterX()), yd2 = (y-eye2.getCenterY());

@@ -35,11 +35,11 @@ public class Avatar{
     head.setFill(Color.RED);
 
     pupil1 = new Circle(centerXMain-25,centerYMain-20,5);
-    pupil1.setStroke(Color.BLACK);
+    pupil1.setStroke(Color.TRANSPARENT);
     pupil1.setFill(Color.BLACK);
 
     pupil2 = new Circle(centerXMain+25,centerYMain-20,5);
-    pupil2.setStroke(Color.BLACK);
+    pupil2.setStroke(Color.TRANSPARENT);
     pupil2.setFill(Color.BLACK);
 
     eye1 = new Ellipse(centerXMain-25,centerYMain-20,25,25);
@@ -84,6 +84,18 @@ public class Avatar{
 
   }
 
+  private void checkIsGlasses(){
+    if (isGlasses == false){
+      pupil1.setFill(Color.BLACK);
+      pupil2.setFill(Color.BLACK);
+    }else{
+      pupil1.setFill(Color.TRANSPARENT);
+      pupil2.setFill(Color.TRANSPARENT);
+    }
+  }
+
+
+
   public Circle getHead(){
     return head;
   }
@@ -118,6 +130,10 @@ public class Avatar{
 
 
 
+  public void setIsGlasses(Boolean isg){
+    isGlasses = isg;
+    this.checkIsGlasses();
+  }
 
   public void setHead(Circle h){
     head = h;

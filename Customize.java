@@ -23,7 +23,7 @@ public class Customize implements Runnable{
     pane = p;
     avtr = avt;
     mi = new MouthIndex(5);
-    ei = new EyeIndex(5);
+    ei = new EyeIndex(5,4);
     btnMouthLeft = new Button("Left");
     btnMouthRight = new Button("Right");
     btnEyeLeft = new Button("Left");
@@ -59,12 +59,14 @@ public class Customize implements Runnable{
         ei.incDownEIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
+        avtr.setIsGlasses(ei.getGlassesind());
       });
 
       btnEyeRight.setOnAction(e->{
         ei.incUpEIndex();
         //System.out.println(mi.getMIndex());
         avtr.setImgEye(new Image(String.format("res/e%d.png",ei.getEIndex())));
+        avtr.setIsGlasses(ei.getGlassesind());
       });
 
       colpick.setOnAction(e->{
@@ -73,6 +75,7 @@ public class Customize implements Runnable{
       });
     });
   }
+  
 }
 
 class MouthIndex{
@@ -102,10 +105,11 @@ class MouthIndex{
 }
 
 class EyeIndex{
-  int ind, maxind;
-  public EyeIndex(int maxIndex){
+  int ind, maxind, glassesIndex;
+  public EyeIndex(int maxIndex, int glassesind){
     ind = 1;
     maxind = maxIndex;
+    glassesIndex = glassesind;
   }
   public int getEIndex(){
     return ind;
@@ -117,6 +121,13 @@ class EyeIndex{
     ind ++;
     if (ind == maxind+1){
       ind = 1;
+    }
+  }
+  public Boolean getGlassesind(){
+    if (ind >= glassesIndex){
+      return true;
+    }else{
+      return false;
     }
   }
   public void incDownEIndex(){
