@@ -21,4 +21,4 @@ IDEAS:
 	 
 	For binary I/O:
 	 - File to contain profile/avatar selection info, high score
-	-Files contained in order of (username: String,eye: int, mouth: int, Colour: idk yet)
+	-Files contained in order of (username: String,eye: int, mouth: int, Colour: String)

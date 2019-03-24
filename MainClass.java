@@ -33,12 +33,14 @@ public class MainClass extends Application{
     customizePane.setStyle("-fx-background-color: transparent;");
 
     Button btnExit = new Button("Exit");
+    btnExit.setMaxSize(100,200);
     HBox exiPane = new HBox();
     exiPane.setAlignment(Pos.BASELINE_RIGHT);
     exiPane.getChildren().add(btnExit);
 
 
     new Thread(new AvatarAnimate(new Avatar(200,200), aviPane,menuMain)).start();
+
     /*
     Avatar avt2 = new Avatar(200,400);
     AvatarAnimate ani2 = new AvatarAnimate(avt2, aviPane);

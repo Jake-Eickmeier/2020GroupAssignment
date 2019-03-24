@@ -24,6 +24,7 @@ public class AvatarAnimate implements Runnable{
   @Override
   public void run(){
     Platform.runLater(() -> {
+      //add all avatar objects to pane
       pane.getChildren().add(avtr.getMainCircleArea());
       pane.getChildren().add(avtr.getHead());
       pane.getChildren().add(avtr.getImgMouthView());
@@ -33,26 +34,35 @@ public class AvatarAnimate implements Runnable{
       pane.getChildren().add(avtr.getPupil1());
       pane.getChildren().add(avtr.getPupil2());
 
+      //action on mouse moved on pane
       getmousepane.setOnMouseMoved(e -> {
+        //get mouse co-ordinates in relation to circle center
         double xd = (e.getX()-avtr.getMainCircleArea().getCenterX());
         double yd = (e.getY()-avtr.getMainCircleArea().getCenterY());
+        //get euclidean vector norm from co-ordinates
         double dnorm = Math.sqrt(Math.pow(xd,2)+Math.pow(yd,2));
+        //create unit vector
         double xu = xd/dnorm, yu = yd/dnorm;
+        //main x and y variables created
         int x, y;
 
         if (dnorm >= avtr.getMainCircleArea().getRadius()){
+          //if mouse outside main circle make general position to max
           x = (int)(Math.floor(10*xu));
           y = (int)(Math.floor(10*yu));
         }else{
+          //if mouse inside main circle, make relatie position towards mouse
           x = (int)(Math.floor((dnorm*1/15)*xu));
           y = (int)(Math.floor((dnorm*1/15)*yu));
 
         }
 
+        //move head inverse to mouse position
         Circle head = avtr.getHead();
         head.setCenterX(-x+avtr.getMainCircleArea().getCenterX());
         head.setCenterY(-y+avtr.getMainCircleArea().getCenterY());
         avtr.setHead(head);
+
 
         ImageView eyeimg = avtr.getImgEyeView();
         eyeimg.setX(x/2+avtr.getMainCircleArea().getCenterX()-50);
@@ -65,10 +75,12 @@ public class AvatarAnimate implements Runnable{
         Ellipse e1 = avtr.getEye1();
         e1.setCenterX(x/2+avtr.getMainCircleArea().getCenterX()-25);
         e1.setCenterY(y/2+avtr.getMainCircleArea().getCenterY()-20);
+        avtr.setEye1(e1);
 
         Ellipse e2 = avtr.getEye2();
         e2.setCenterX(x/2+avtr.getMainCircleArea().getCenterX()+25);
         e2.setCenterY(y/2+avtr.getMainCircleArea().getCenterY()-20);
+        avtr.setEye2(e2);
 
         if (eyeimg.getY() < avtr.getCenterYMain()-40){
           eyeimg.setFitHeight(40+(eyeimg.getY()-avtr.getCenterYMain()+40));
@@ -82,8 +94,7 @@ public class AvatarAnimate implements Runnable{
         }
 
         avtr.setImgMouthView(mouthimg);
-        avtr.setEye1(e1);
-        avtr.setEye2(e2);
+
         int[] f = place((int)e.getX(),(int)e.getY(),e1,e2);
         Circle pup1 = avtr.getPupil1(), pup2 = avtr.getPupil2();
         pup1.setCenterX(f[0]);

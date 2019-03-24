@@ -71,11 +71,12 @@ public class Customize implements Runnable{
 
       colpick.setOnAction(e->{
         Color c = colpick.getValue();
+        System.out.println(c);
         avtr.setColor(c);
       });
     });
   }
-  
+
 }
 
 class MouthIndex{
