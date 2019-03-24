@@ -23,7 +23,7 @@ public class MenuSelect implements Runnable{
   Timeline setup, select;
   Pane pane;
   ItemSelect iSelect;
-  Image item1img;
+  Image item1img, item2img, item3img;
 
   ImageView[] items;
 
@@ -34,16 +34,19 @@ public class MenuSelect implements Runnable{
     menuPath.setStroke(Color.BLACK);
 
 
-    item1img = new Image("test1.png");
+    item1img = new Image("res/btnChat.png");
+    item2img = new Image("res/btnCustomize.png");
+    item3img = new Image("res/btnExit.png");
+
     item1 = new ImageView(item1img);
     item1.setFitWidth(100);
     item1.setFitHeight(100);
 
-    item2 = new ImageView(item1img);
+    item2 = new ImageView(item2img);
     item2.setFitWidth(100);
     item2.setFitHeight(100);
 
-    item3 = new ImageView(item1img);
+    item3 = new ImageView(item3img);
     item3.setFitWidth(100);
     item3.setFitHeight(100);
 

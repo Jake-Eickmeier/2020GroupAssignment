@@ -37,8 +37,8 @@ public class Avatar{
     centerYMain = mainY;
     //create main circle area
     mainCircleArea = new Circle(centerXMain,centerYMain,150);
-    mainCircleArea.setStroke(Color.BLACK);
-    mainCircleArea.setFill(Color.WHITE);
+    mainCircleArea.setStroke(Color.TRANSPARENT);
+    mainCircleArea.setFill(Color.TRANSPARENT);
 
     head = new Circle(centerXMain,centerYMain,50);
     head.setStroke(Color.TRANSPARENT);

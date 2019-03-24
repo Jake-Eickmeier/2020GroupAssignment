@@ -25,6 +25,7 @@ public class MainClass extends Application{
     menuMain.setStyle("-fx-background-image: url(\"res/backMain.png\")");
     BorderPane customizeMain = new BorderPane();
     customizeMain.setStyle("-fx-background-image: url(\"res/backCust.png\")");
+
     Pane aviPane = new Pane();
     aviPane.setStyle("-fx-background-color: transparent;");
     Pane selectPane = new Pane();
@@ -40,7 +41,7 @@ public class MainClass extends Application{
     exiPane.getChildren().add(btnExit);
 
 
-    new Thread(new AvatarAnimate(new Avatar(200,200), aviPane,menuMain)).start();
+    new Thread(new AvatarAnimate(new Avatar(200,300), aviPane,menuMain)).start();
 
     /*
     Avatar avt2 = new Avatar(200,400);
@@ -84,7 +85,8 @@ public class MainClass extends Application{
     btnExit.setOnAction(e->{
       if (primaryStage.getScene() == customizeScene){
         menuMain.setLeft(aviPane);
-        Avatar avtMain = new Avatar(200,200);
+        aviPane.getChildren().clear();
+        Avatar avtMain = new Avatar(200,300);
         AvatarAnimate aniMain = new AvatarAnimate(avtMain, aviPane,menuMain);
         new Thread(aniMain).start();
         //new Thread(aniMain).start();
@@ -101,22 +103,26 @@ public class MainClass extends Application{
         switch (e.getCode()) {
           case DOWN: {
               selectMain.animateToNext();
+              System.out.println(selectMain.getISelect());
               break;
             }
 
             case ENTER: {
-
-              customizeMain.setLeft(aviPane);
-              Avatar avtCust = new Avatar(200,200);
-              AvatarAnimate aniCust = new AvatarAnimate(avtCust, aviPane,customizeMain);
-              Thread tCust = new Thread(aniCust);
-              tCust.start();
-              Customize cust = new Customize(customizePane,avtCust);
-              Thread customizeThread = new Thread(cust);
-              customizeThread.start();
-              primaryStage.setScene(customizeScene);
-
-              break;
+              if (selectMain.getISelect() == 1){
+                customizeMain.setLeft(aviPane);
+                aviPane.getChildren().clear();
+                Avatar avtCust = new Avatar(200,300);
+                AvatarAnimate aniCust = new AvatarAnimate(avtCust, aviPane,customizeMain);
+                Thread tCust = new Thread(aniCust);
+                tCust.start();
+                Customize cust = new Customize(customizePane,avtCust);
+                Thread customizeThread = new Thread(cust);
+                customizeThread.start();
+                primaryStage.setScene(customizeScene);
+                break;
+              }else if(selectMain.getISelect() == 2){
+                primaryStage.close();
+              }
             }
           }
 
