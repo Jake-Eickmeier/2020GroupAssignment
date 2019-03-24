@@ -22,8 +22,9 @@ public class MainClass extends Application{
   public void start(Stage primaryStage){
 
     BorderPane menuMain = new BorderPane();
+    menuMain.setStyle("-fx-background-image: url(\"res/backMain.png\")");
     BorderPane customizeMain = new BorderPane();
-    menuMain.setStyle("-fx-background-color: pink;");
+    customizeMain.setStyle("-fx-background-image: url(\"res/backCust.png\")");
     Pane aviPane = new Pane();
     aviPane.setStyle("-fx-background-color: transparent;");
     Pane selectPane = new Pane();
