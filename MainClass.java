@@ -25,6 +25,8 @@ public class MainClass extends Application{
     menuMain.setStyle("-fx-background-image: url(\"res/backMain.png\")");
     BorderPane customizeMain = new BorderPane();
     customizeMain.setStyle("-fx-background-image: url(\"res/backCust.png\")");
+    BorderPane serverMain = new BorderPane();
+    serverMain.setStyle("-fx-background-image: url(\"res/backMulti.png\")");
 
     Pane aviPane = new Pane();
     aviPane.setStyle("-fx-background-color: transparent;");
@@ -64,7 +66,6 @@ public class MainClass extends Application{
 
     menuMain.setLeft(aviPane);
     menuMain.setCenter(selectPane);
-    menuMain.setBottom(exiPane);
 
     Scene mainMenuScene = new Scene(menuMain,800,600);
 
@@ -73,9 +74,13 @@ public class MainClass extends Application{
 
 
     customizeMain.setCenter(customizePane);
-    customizeMain.setBottom(exiPane);
+
 
     Scene customizeScene = new Scene(customizeMain,800,600);
+
+
+
+    Scene serverScene = new Scene(serverMain,800,600);
 
     primaryStage.setTitle(" ");
     primaryStage.setScene(mainMenuScene);
@@ -83,7 +88,7 @@ public class MainClass extends Application{
     selectPane.requestFocus();
 
     btnExit.setOnAction(e->{
-      if (primaryStage.getScene() == customizeScene){
+      if (primaryStage.getScene() != mainMenuScene){
         menuMain.setLeft(aviPane);
         aviPane.getChildren().clear();
         Avatar avtMain = new Avatar(200,300);
@@ -103,13 +108,13 @@ public class MainClass extends Application{
         switch (e.getCode()) {
           case DOWN: {
               selectMain.animateToNext();
-              System.out.println(selectMain.getISelect());
               break;
             }
 
             case ENTER: {
               if (selectMain.getISelect() == 1){
                 customizeMain.setLeft(aviPane);
+                customizeMain.setBottom(exiPane);
                 aviPane.getChildren().clear();
                 Avatar avtCust = new Avatar(200,300);
                 AvatarAnimate aniCust = new AvatarAnimate(avtCust, aviPane,customizeMain);
@@ -119,10 +124,15 @@ public class MainClass extends Application{
                 Thread customizeThread = new Thread(cust);
                 customizeThread.start();
                 primaryStage.setScene(customizeScene);
-                break;
+
               }else if(selectMain.getISelect() == 2){
                 primaryStage.close();
+              }else{
+                serverMain.setBottom(exiPane);
+                aviPane.getChildren().clear();
+                primaryStage.setScene(serverScene);
               }
+              break;
             }
           }
 
