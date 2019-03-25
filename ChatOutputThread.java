@@ -5,7 +5,6 @@ import javafx.scene.control.TextField;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
-import javafx.stage.Stage;
 
 /**
  * This thread is responsible for reading what the user types and
@@ -20,15 +19,13 @@ public class ChatOutputThread extends Thread {
 	private PrintWriter writer;
   private TextArea ta;
   private TextField tf;
-  Stage s;
 
 
-	public ChatOutputThread(Socket socket, ChatClient client, TextArea ta, TextField tf, Stage primaryStage, Message userN) {
+	public ChatOutputThread(Socket socket, ChatClient client, TextArea ta, TextField tf, Message userN) {
 		this.socket = socket;
 		this.client = client;
     this.ta = ta;
     this.tf = tf;
-    this.s = primaryStage;
     client.setUserName(userN.getMessage());
 
 		try {
@@ -41,16 +38,7 @@ public class ChatOutputThread extends Thread {
 	}
 
 	public void run() {
-
-		//TODO: Change the console from System.console() to instead grab text entered
-		//from within the "game" client
-
-    Message mess = new Message();
-		//TODO: set userName using a getter method instead of by reading from prompt
-		//(user will already have created a name for their avatar)
-
-		//TODO: this should probably be triggered by an event of the user hitting enter
-		//while a message is typed in the chatbox
+		Message mess = new Message();
 
 		do {
       tf.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -62,16 +50,16 @@ public class ChatOutputThread extends Thread {
             tf.clear();
           }
         }
-      });
+      });/*
       tf.setOnKeyPressed(new EventHandler<KeyEvent>() {
         @Override
         public void handle(KeyEvent ke) {
           if (ke.getCode().equals(KeyCode.ESCAPE)) {
-            s.close();
+            p.setVisible(false);
           }
         }
-      });
-		} while (s.isShowing());	//TODO: Can obviously customize this if desired or change to event (e.g. pressing 'esc' key)
+      });*/
+		} while (tf.isVisible() == true);	//TODO: Can obviously customize this if desired or change to event (e.g. pressing 'esc' key)
 
 		try {
 			socket.close();		//After the chat exchange is finished, close the socket
