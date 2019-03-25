@@ -20,10 +20,11 @@ public class Chat implements Runnable{
   BorderPane pane;
   Stage stage;
   ChatClient client;
+  String username;
 
-
-  public Chat(BorderPane p) {
+  public Chat(BorderPane p, String usern) {
     pane = p;
+    username = usern;
     ta.setWrapText(true);
     ta.setEditable(false);
     tf.setPrefColumnCount(17);
@@ -58,7 +59,7 @@ public class Chat implements Runnable{
 
   public void run(){
     client = new ChatClient("Localhost", 8000);
-    client.execute(ta, tf);
+    client.execute(ta, tf, username);
   }
   public void killChat(){
     client.endClient();

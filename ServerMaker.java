@@ -1,9 +1,10 @@
 public class ServerMaker implements Runnable{
+  ChatServer cServ;
   public ServerMaker(){
 
   }
   public void run(){
-    ChatServer cServ = new ChatServer(8000);
+    cServ = new ChatServer(8000);
     cServ.execute();
   }
 }

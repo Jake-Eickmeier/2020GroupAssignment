@@ -105,7 +105,8 @@ public class MainClass extends Application{
 
     Scene serverOptionScene = new Scene(serverOptionPane,800,600);
 
-    Chat chat1 = new Chat(serverMain);
+
+
 
     primaryStage.setTitle(" ");
     primaryStage.setScene(mainMenuScene);
@@ -115,9 +116,11 @@ public class MainClass extends Application{
 
     btnExit.setOnAction(e->{
       if (primaryStage.getScene() != mainMenuScene){
+        /*
         if(primaryStage.getScene() == serverScene){
           chat1.killChat();
         }
+        */
         menuMain.setLeft(aviPane);
         aviPane.getChildren().clear();
         Avatar avtMain = new Avatar(200,300,currUser.getCurrentUser());
@@ -155,7 +158,7 @@ public class MainClass extends Application{
       Thread tServUser = new Thread(aniServUser);
       tServUser.start();
 
-
+      Chat chat1 = new Chat(serverMain,currUser.getCurrentUser().getUsername());
       new Thread(chat1).start();
       primaryStage.setScene(serverScene);
     });
@@ -183,7 +186,7 @@ public class MainClass extends Application{
       Thread tServUser = new Thread(aniServUser);
       tServUser.start();
 
-
+      Chat chat1 = new Chat(serverMain,currUser.getCurrentUser().getUsername());
       new Thread(chat1).start();
       primaryStage.setScene(serverScene);
 

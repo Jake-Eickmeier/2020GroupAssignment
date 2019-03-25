@@ -24,12 +24,10 @@ public class MenuSelect implements Runnable{
   Pane pane;
   ItemSelect iSelect;
   Image item1img, item2img, item3img;
-  Boolean isStarted;
 
   ImageView[] items;
 
   public MenuSelect(Pane p){
-    isStarted = false;
     pane = p;
     menuPath = new Ellipse(200,300,50,200);
     menuPath.setFill(Color.TRANSPARENT);
@@ -146,7 +144,6 @@ public class MenuSelect implements Runnable{
       st3.play();
 
       setup.play();
-      isStarted = true;
 
 
     });

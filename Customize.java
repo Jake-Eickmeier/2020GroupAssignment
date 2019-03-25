@@ -38,6 +38,8 @@ public class Customize implements Runnable{
     btnLoad = new Button("Load");
     usernameField = new TextField();
     loadId = new TextField();
+    usernameField.setPromptText("Enter Username");
+    loadId.setPromptText("Enter load ID");
 
 
   }
@@ -105,6 +107,7 @@ public class Customize implements Runnable{
 
             currentUser.setCurrentUser(ac.GetInfo(curid));
             avtr.setUser(currentUser.getCurrentUser());
+            usernameField.setText(currentUser.getCurrentUser().getUsername());
             EyeIndex tempEID = new EyeIndex(5,4);
             tempEID.setEIndex(currentUser.getCurrentUser().getEyetype());
             avtr.setIsGlasses(tempEID.getGlassesind());

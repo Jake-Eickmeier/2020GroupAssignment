@@ -25,12 +25,12 @@ public class ChatClient {
 		this.port = port;
 	}
 
-	public void execute(TextArea ta, TextField tf) {
+	public void execute(TextArea ta, TextField tf, String username) {
 		try {
 			socket = new Socket(hostName, port);
 
 			ta.appendText("Connected to the chat server");
-
+			/*
 			//Delete all this
       ta.appendText("\nEnter your name: ");
 
@@ -46,8 +46,9 @@ public class ChatClient {
         }
       });
 			//Delete all this
+			*/
 
-			this.setUserName(userN.getMessage()); //Change this to this.setUserName(usernamemethod);
+			this.setUserName(username); //Change this to this.setUserName(usernamemethod);
 
 			new ChatInputThread(socket, this, ta, tf).start();
 			new ChatOutputThread(socket, this, ta, tf).start();
@@ -63,7 +64,7 @@ public class ChatClient {
 		try{
 			socket.close();
 		}catch(Exception ex){
-			
+
 		}
 	}
 
