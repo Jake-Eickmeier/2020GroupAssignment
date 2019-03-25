@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
@@ -24,7 +24,7 @@ public class ChatClient {
 		this.port = port;
 	}
 
-	public void execute(TextArea ta, TextField tf, Stage primaryStage) {
+	public void execute(TextArea ta, TextField tf) {
 		try {
 			Socket socket = new Socket(hostName, port);
 
@@ -45,7 +45,7 @@ public class ChatClient {
       });
 
 			new ChatInputThread(socket, this, ta, tf).start();
-			new ChatOutputThread(socket, this, ta, tf, primaryStage, userN).start();
+			new ChatOutputThread(socket, this, ta, tf, userN).start();
 
 		} catch (UnknownHostException ex) {
 			ta.appendText("Server not found: " + ex.getMessage() + "\n");

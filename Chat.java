@@ -57,7 +57,7 @@ public class Chat implements Runnable{
 
   public void run(){
     ChatClient client = new ChatClient("Localhost", 8000);
-    client.execute(ta, tf, stage);
+    client.execute(ta, tf);
   }
 
 }
