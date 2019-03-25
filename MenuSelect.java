@@ -31,7 +31,7 @@ public class MenuSelect implements Runnable{
     pane = p;
     menuPath = new Ellipse(200,300,50,200);
     menuPath.setFill(Color.TRANSPARENT);
-    menuPath.setStroke(Color.BLACK);
+    menuPath.setStroke(Color.TRANSPARENT);
 
 
     item1img = new Image("res/btnChat.png");
