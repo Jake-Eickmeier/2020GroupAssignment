@@ -42,8 +42,11 @@ public class MainClass extends Application{
     exiPane.setAlignment(Pos.BASELINE_RIGHT);
     exiPane.getChildren().add(btnExit);
 
+    UserClass user = makeUser("po","#cc8099",1,1);
 
-    new Thread(new AvatarAnimate(new Avatar(200,300), aviPane,menuMain)).start();
+    new Thread(new AvatarAnimate(new Avatar(200,300,user), aviPane,menuMain)).start();
+
+
 
     /*
     Avatar avt2 = new Avatar(200,400);
@@ -90,7 +93,7 @@ public class MainClass extends Application{
       if (primaryStage.getScene() != mainMenuScene){
         menuMain.setLeft(aviPane);
         aviPane.getChildren().clear();
-        Avatar avtMain = new Avatar(200,300);
+        Avatar avtMain = new Avatar(200,300,user);
         AvatarAnimate aniMain = new AvatarAnimate(avtMain, aviPane,menuMain);
         new Thread(aniMain).start();
         //new Thread(aniMain).start();
@@ -115,7 +118,7 @@ public class MainClass extends Application{
                 customizeMain.setLeft(aviPane);
                 customizeMain.setBottom(exiPane);
                 aviPane.getChildren().clear();
-                Avatar avtCust = new Avatar(200,300);
+                Avatar avtCust = new Avatar(200,300,user);
                 AvatarAnimate aniCust = new AvatarAnimate(avtCust, aviPane,customizeMain);
                 Thread tCust = new Thread(aniCust);
                 tCust.start();
@@ -135,14 +138,14 @@ public class MainClass extends Application{
                 aviPaneOther.setStyle("-fx-background-color: transparent;");
 
 
-                Avatar avtServOther = new Avatar(100,300);
+                Avatar avtServOther = new Avatar(100,300,user);
                 AvatarAnimate aniServOther = new AvatarAnimate(avtServOther, aviPaneOther,serverMain);
                 Thread tServOther = new Thread(aniServOther);
                 tServOther.start();
 
                 serverMain.setRight(aviPaneOther);
 
-                Avatar avtServUser = new Avatar(100,300);
+                Avatar avtServUser = new Avatar(100,300,user);
                 AvatarAnimate aniServUser = new AvatarAnimate(avtServUser, aviPane,serverMain);
                 Thread tServUser = new Thread(aniServUser);
                 tServUser.start();
@@ -157,6 +160,17 @@ public class MainClass extends Application{
 
     });
 
+  }
+
+  public UserClass makeUser(String username, String colour, int mouthtype, int eyetype){
+    UserClass user;
+    try{
+    user = new UserClass(username, colour, mouthtype, eyetype);
+  }catch (Exception ie){
+    System.out.println("Oh darn");
+    user = new UserClass();
+  }
+  return user;
   }
 
   public static void main(String[] args){

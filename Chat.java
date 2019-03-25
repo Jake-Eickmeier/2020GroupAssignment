@@ -27,17 +27,19 @@ public class Chat implements Runnable{
     ta.setEditable(false);
     tf.setPrefColumnCount(17);
     ta.setPrefColumnCount(14);
+    ta.setPrefRowCount(60);
 
     GridPane gridPane = new GridPane();
     gridPane.setStyle("-fx-background-color: transparent;");
-    gridPane.add(ta, 0, 0);
+
     gridPane.add(tf, 0, 1);
 
 
-    ScrollPane scrPane = new ScrollPane(gridPane);
+    ScrollPane scrPane = new ScrollPane(ta);
     scrPane.setStyle("-fx-background-color: transparent;");
 
-    pane.setCenter(scrPane);
+    gridPane.add(scrPane, 0, 0);
+    pane.setCenter(gridPane);
 
 
 

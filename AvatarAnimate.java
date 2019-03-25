@@ -10,7 +10,7 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class AvatarAnimate implements Runnable{
+class AvatarAnimate implements Runnable{
   Avatar avtr;
   Pane pane;
   Pane getmousepane;

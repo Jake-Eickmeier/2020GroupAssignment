@@ -9,15 +9,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.image.Image;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
 public class Customize implements Runnable{
   GridPane pane;
   Avatar avtr;
-  Button btnMouthLeft, btnMouthRight, btnEyeLeft, btnEyeRight;
+  Button btnMouthLeft, btnMouthRight, btnEyeLeft, btnEyeRight, btnSave, btnLoad;
   ColorPicker colpick;
   Color col;
   MouthIndex mi;
   EyeIndex ei;
+  TextField usernameField;
 
   public Customize(GridPane p, Avatar avt){
     pane = p;
@@ -29,6 +32,10 @@ public class Customize implements Runnable{
     btnEyeLeft = new Button("Left");
     btnEyeRight = new Button("Right");
     colpick= new ColorPicker();
+    btnSave = new Button("Save");
+    btnLoad = new Button("Load");
+    usernameField = new TextField();
+
 
   }
   @Override
@@ -42,6 +49,9 @@ public class Customize implements Runnable{
       pane.add(new Text("Eye"),1,1);
       pane.add(btnEyeRight,2,1);
       pane.add(colpick,2,2);
+      pane.add(btnSave,0,3);
+      pane.add(btnLoad,2,3);
+      pane.add(usernameField,0,4);
 
       btnMouthLeft.setOnAction(e->{
         mi.incDownMIndex();
@@ -69,12 +79,41 @@ public class Customize implements Runnable{
         avtr.setIsGlasses(ei.getGlassesind());
       });
 
+      btnSave.setOnAction(e->{
+        UserClass user = makeUser(usernameField.getText(),"" + col,ei.getEIndex(),mi.getMIndex());
+
+        try{
+          user.Save();
+        }catch(Exception ex ){
+          System.out.println("Unable to save");
+        }
+      });
+
+      btnLoad.setOnAction(e->{
+        UserFileAccess ac = new UserFileAccess();
+        int maxid = ac.getMaxID();
+        System.out.println(maxid);
+
+
+      });
+
       colpick.setOnAction(e->{
-        Color c = colpick.getValue();
-        avtr.setColor(c);
+        col = colpick.getValue();
+        avtr.setColor(col);
       });
     });
   }
+  public UserClass makeUser(String username, String colour, int mouthtype, int eyetype){
+    UserClass user;
+    try{
+    user = new UserClass(username, colour, mouthtype, eyetype);
+  }catch (Exception ie){
+    System.out.println("Oh darn");
+    user = new UserClass();
+  }
+  return user;
+  }
+
 
 }
 

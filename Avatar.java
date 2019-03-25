@@ -31,10 +31,15 @@ public class Avatar{
   //value to check if avatar eyes obstruct pupils
   Boolean isGlasses;
 
-  public Avatar(double mainX, double mainY){
+  UserClass user;
+
+
+  public Avatar(double mainX, double mainY, UserClass us){
     //set main avatar origin
     centerXMain = mainX;
     centerYMain = mainY;
+
+    user = us;
     //create main circle area
     mainCircleArea = new Circle(centerXMain,centerYMain,150);
     mainCircleArea.setStroke(Color.TRANSPARENT);
@@ -42,7 +47,8 @@ public class Avatar{
 
     head = new Circle(centerXMain,centerYMain,50);
     head.setStroke(Color.TRANSPARENT);
-    head.setFill(Color.RED);
+    col = Color.web(user.getColour());
+    head.setFill(col);
 
     pupil1 = new Circle(centerXMain-25,centerYMain-20,5);
     pupil1.setStroke(Color.TRANSPARENT);
@@ -64,8 +70,11 @@ public class Avatar{
     Image imgEye = new Image("res/ey.png");
     ImageView r1 = new ImageView(imgEye);
     */
+
+    int mindtemp = user.getMouthtype();
+    int eindtemp = user.getEyetype();
     //create mouth objects
-    imgMouth = new Image("res/m1.png");
+    imgMouth = new Image("res/m" + mindtemp + ".png");
     imgMouthView  = new ImageView(imgMouth);
     imgMouthView.setX(centerXMain-30);
     imgMouthView.setY(centerYMain+10);
@@ -73,7 +82,7 @@ public class Avatar{
     imgMouthView.setFitWidth(60);
 
     //create eye objects
-    imgEye = new Image("res/e2.png");
+    imgEye = new Image("res/e" + eindtemp + ".png");
     imgEyeView  = new ImageView(imgEye);
     imgEyeView.setX(centerXMain-50);
     imgEyeView.setY(centerYMain-40);
@@ -186,6 +195,16 @@ public class Avatar{
     col = color;
     //also change colour to new colour
     head.setFill(col);
+  }
+
+  public void setUser(UserClass us){
+    this.user = us;
+    this.setColor(Color.web(user.getColour()));
+    int mindtemp = user.getMouthtype();
+    int eindtemp = user.getEyetype();
+    this.setImgMouth(new Image(String.format("res/m%d.png",mindtemp)));
+    this.setImgEye(new Image(String.format("res/e%d.png",eindtemp)));
+
   }
 
 
