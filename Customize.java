@@ -26,7 +26,7 @@ public class Customize implements Runnable{
   public Customize(GridPane p, Avatar avt){
     pane = p;
     avtr = avt;
-    col = "White";
+    col = Color.web("White");
     mi = new MouthIndex(5);
     ei = new EyeIndex(5,4);
     btnMouthLeft = new Button("Left");

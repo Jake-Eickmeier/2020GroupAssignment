@@ -42,7 +42,10 @@ public class MainClass extends Application{
     exiPane.setAlignment(Pos.BASELINE_RIGHT);
     exiPane.getChildren().add(btnExit);
 
+    UserFileAccess F = new UserFileAccess();
+
     UserClass user = makeUser("po","#cc8099",1,1);
+
 
     new Thread(new AvatarAnimate(new Avatar(200,300,user), aviPane,menuMain)).start();
 
