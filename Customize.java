@@ -21,10 +21,12 @@ public class Customize implements Runnable{
   MouthIndex mi;
   EyeIndex ei;
   TextField usernameField;
+  TextField loadId;
 
   public Customize(GridPane p, Avatar avt){
     pane = p;
     avtr = avt;
+    col = "White";
     mi = new MouthIndex(5);
     ei = new EyeIndex(5,4);
     btnMouthLeft = new Button("Left");
@@ -35,6 +37,7 @@ public class Customize implements Runnable{
     btnSave = new Button("Save");
     btnLoad = new Button("Load");
     usernameField = new TextField();
+    loadId = new TextField();
 
 
   }
@@ -52,6 +55,7 @@ public class Customize implements Runnable{
       pane.add(btnSave,0,3);
       pane.add(btnLoad,2,3);
       pane.add(usernameField,0,4);
+      pane.add(loadId,2,5);
 
       btnMouthLeft.setOnAction(e->{
         mi.incDownMIndex();
@@ -93,7 +97,17 @@ public class Customize implements Runnable{
         UserFileAccess ac = new UserFileAccess();
         int maxid = ac.getMaxID();
         System.out.println(maxid);
-
+        try {
+          int curid = Integer.parseInt(loadId.getText().trim());
+          if (curid <= 0 || curid > maxid){
+            loadId.setText("Please Enter Valid Id to load");
+          }else{
+            avtr.setUser(ac.GetInfo(curid));
+          }
+        } catch(Exception ex) {
+          System.out.println(ex);
+          loadId.setText("Please enter id to load");
+        }
 
       });
 
