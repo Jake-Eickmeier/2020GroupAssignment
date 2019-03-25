@@ -21,12 +21,11 @@ public class ChatOutputThread extends Thread {
   private TextField tf;
 
 
-	public ChatOutputThread(Socket socket, ChatClient client, TextArea ta, TextField tf, Message userN) {
+	public ChatOutputThread(Socket socket, ChatClient client, TextArea ta, TextField tf) {
 		this.socket = socket;
 		this.client = client;
     this.ta = ta;
     this.tf = tf;
-    client.setUserName(userN.getMessage());
 
 		try {
 			OutputStream output = socket.getOutputStream();

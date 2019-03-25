@@ -30,6 +30,7 @@ public class ChatClient {
 
 			ta.appendText("Connected to the chat server");
 
+			//Delete all this
       ta.appendText("\nEnter your name: ");
 
       Message userN = new Message();
@@ -43,9 +44,12 @@ public class ChatClient {
           }
         }
       });
+			//Delete all this
+
+			this.setUserName(userN.getMessage()); //Change this to this.setUserName(usernamemethod);
 
 			new ChatInputThread(socket, this, ta, tf).start();
-			new ChatOutputThread(socket, this, ta, tf, userN).start();
+			new ChatOutputThread(socket, this, ta, tf).start();
 
 		} catch (UnknownHostException ex) {
 			ta.appendText("Server not found: " + ex.getMessage() + "\n");
