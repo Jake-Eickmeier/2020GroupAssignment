@@ -71,8 +71,6 @@ public class MainClass extends Application{
 
 
 
-
-
     customizeMain.setCenter(customizePane);
 
 
@@ -84,6 +82,7 @@ public class MainClass extends Application{
 
     primaryStage.setTitle(" ");
     primaryStage.setScene(mainMenuScene);
+    primaryStage.setResizable(false);
     primaryStage.show();
     selectPane.requestFocus();
 
@@ -128,8 +127,28 @@ public class MainClass extends Application{
               }else if(selectMain.getISelect() == 2){
                 primaryStage.close();
               }else{
+                serverMain.setLeft(aviPane);
                 serverMain.setBottom(exiPane);
                 aviPane.getChildren().clear();
+
+                Pane aviPaneOther = new Pane();
+                aviPaneOther.setStyle("-fx-background-color: transparent;");
+
+
+                Avatar avtServOther = new Avatar(100,300);
+                AvatarAnimate aniServOther = new AvatarAnimate(avtServOther, aviPaneOther,serverMain);
+                Thread tServOther = new Thread(aniServOther);
+                tServOther.start();
+
+                serverMain.setRight(aviPaneOther);
+
+                Avatar avtServUser = new Avatar(100,300);
+                AvatarAnimate aniServUser = new AvatarAnimate(avtServUser, aviPane,serverMain);
+                Thread tServUser = new Thread(aniServUser);
+                tServUser.start();
+
+                Chat chat1 = new Chat(serverMain,primaryStage);
+                new Thread(chat1).start();
                 primaryStage.setScene(serverScene);
               }
               break;
