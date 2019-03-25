@@ -18,6 +18,7 @@ public class ChatClient {
 	private String userName;
 	private String hostName;
 	private int port;
+	private Socket socket;
 
 	public ChatClient(String hostName, int port) {
 		this.hostName = hostName;
@@ -26,7 +27,7 @@ public class ChatClient {
 
 	public void execute(TextArea ta, TextField tf) {
 		try {
-			Socket socket = new Socket(hostName, port);
+			socket = new Socket(hostName, port);
 
 			ta.appendText("Connected to the chat server");
 
@@ -57,6 +58,13 @@ public class ChatClient {
 			ta.appendText("I/O Error: " + ex.getMessage() + "\n");
 		}
 
+	}
+	public void endClient(){
+		try{
+			socket.close();
+		}catch(Exception ex){
+			
+		}
 	}
 
 	void setUserName(String userName) {

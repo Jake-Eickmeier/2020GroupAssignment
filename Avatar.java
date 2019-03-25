@@ -82,12 +82,18 @@ public class Avatar{
     imgMouthView.setFitWidth(60);
 
     //create eye objects
+    if (eindtemp >= 4){
+      isGlasses = true;
+    }else{
+      isGlasses = false;
+    }
     imgEye = new Image("res/e" + eindtemp + ".png");
     imgEyeView  = new ImageView(imgEye);
     imgEyeView.setX(centerXMain-50);
     imgEyeView.setY(centerYMain-40);
     imgEyeView.setFitHeight(40);
     imgEyeView.setFitWidth(100);
+    this.checkIsGlasses();
 
     /*
     Rectangle r1 = new Rectangle(150,160,100,40);

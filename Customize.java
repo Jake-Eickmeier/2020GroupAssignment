@@ -9,8 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.image.Image;
 import javafx.geometry.Pos;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ComboBox;
 
 public class Customize implements Runnable{
   GridPane pane;
@@ -22,10 +20,12 @@ public class Customize implements Runnable{
   EyeIndex ei;
   TextField usernameField;
   TextField loadId;
+  CurrentUser currentUser;
 
-  public Customize(GridPane p, Avatar avt){
+  public Customize(GridPane p, Avatar avt,CurrentUser currUs){
     pane = p;
     avtr = avt;
+    currentUser = currUs;
     col = Color.web("White");
     mi = new MouthIndex(5);
     ei = new EyeIndex(5,4);
@@ -102,7 +102,12 @@ public class Customize implements Runnable{
           if (curid <= 0 || curid > maxid){
             loadId.setText("Please Enter Valid Id to load");
           }else{
-            avtr.setUser(ac.GetInfo(curid));
+
+            currentUser.setCurrentUser(ac.GetInfo(curid));
+            avtr.setUser(currentUser.getCurrentUser());
+            EyeIndex tempEID = new EyeIndex(5,4);
+            tempEID.setEIndex(currentUser.getCurrentUser().getEyetype());
+            avtr.setIsGlasses(tempEID.getGlassesind());
           }
         } catch(Exception ex) {
           System.out.println(ex);

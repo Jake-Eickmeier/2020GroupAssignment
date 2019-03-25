@@ -19,9 +19,10 @@ public class Chat implements Runnable{
   private TextArea ta = new TextArea();
   BorderPane pane;
   Stage stage;
+  ChatClient client;
 
 
-  public Chat(BorderPane p,Stage s) {
+  public Chat(BorderPane p) {
     pane = p;
     ta.setWrapText(true);
     ta.setEditable(false);
@@ -56,8 +57,11 @@ public class Chat implements Runnable{
   }
 
   public void run(){
-    ChatClient client = new ChatClient("Localhost", 8000);
+    client = new ChatClient("Localhost", 8000);
     client.execute(ta, tf);
+  }
+  public void killChat(){
+    client.endClient();
   }
 
 }

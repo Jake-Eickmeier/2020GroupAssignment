@@ -43,6 +43,7 @@ public class ChatServer {
 	//TODO: Similar to with the Chat Client, this main method should be taken away
 	//and instead have a ChatServer created and executed from within the game client.
 	//Have the user pass the port if they are looking to create a server.
+	/*
 	public static void main(String[] args) {
 		if (args.length < 1) {
 			System.out.println("Syntax: java ChatServer <port-number>");
@@ -54,6 +55,7 @@ public class ChatServer {
 		ChatServer server = new ChatServer(port);
 		server.execute();
 	}
+	*/
 
 
 	//Delivers a message from one user to others (broadcasting)
