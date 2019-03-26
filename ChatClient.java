@@ -30,25 +30,8 @@ public class ChatClient {
 			socket = new Socket(hostName, port);
 
 			ta.appendText("Connected to the chat server");
-			/*
-			//Delete all this
-      ta.appendText("\nEnter your name: ");
 
-      Message userN = new Message();
-
-      tf.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        @Override
-        public void handle(KeyEvent ke) {
-          if (ke.getCode().equals(KeyCode.ENTER)) {
-            userN.setMessage(tf.getText());
-            tf.clear();
-          }
-        }
-      });
-			//Delete all this
-			*/
-
-			this.setUserName(username); //Change this to this.setUserName(usernamemethod);
+			this.setUserName(username);
 
 			new ChatInputThread(socket, this, ta, tf).start();
 			new ChatOutputThread(socket, this, ta, tf).start();
@@ -64,15 +47,10 @@ public class ChatClient {
 		try{
 			socket.close();
 		} catch (Exception ex) {
-			
+
 		}
 	}
 
 	void setUserName(String userName) {this.userName = userName;}
 	String getUserName() {return this.userName;}
-
-	//TODO: When implementing this, we will want to remove this main method and
-	//instead create a new chat client (and execute it) from the events/triggers
-	//within the game client. There should be a prompt to ask for hostName (which
-	//will be localhost in our case) and a port rather than from command line args.
 }

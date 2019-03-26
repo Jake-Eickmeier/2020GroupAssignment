@@ -51,9 +51,4 @@ public class UserClass{
   public int getMouthtype() {return this.mouthtype;}
   public int getEyetype() {return this.eyetype;}
   public int getID() {return this.id;}
-  /*
-  public static void main(String args[]) throws IOException{
-      //This is a function to test
-      UserClass user = new UserClass("myusername", "blue", 1,2);
-  }*/
 }

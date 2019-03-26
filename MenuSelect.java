@@ -48,22 +48,6 @@ public class MenuSelect implements Runnable{
     item3.setFitWidth(100);
     item3.setFitHeight(100);
 
-    /*
-    item1 = new Rectangle (100, 40, 100, 100);
-    item1.setArcHeight(50);
-    item1.setArcWidth(50);
-    item1.setFill(Color.VIOLET);
-
-    item2 = new Rectangle (100, 140, 100, 100);
-    item2.setArcHeight(50);
-    item2.setArcWidth(50);
-    item2.setFill(Color.RED);
-    item3 = new Rectangle (100, 240, 100, 100);
-    item3.setArcHeight(50);
-    item3.setArcWidth(50);
-    item3.setFill(Color.GREEN);
-    */
-
     iSelect = new ItemSelect();
 
     st1 = new ScaleTransition(Duration.millis(1500));
@@ -166,7 +150,7 @@ class ItemSelect{
   int item;
 
   public ItemSelect() {item = 1;}
-  
+
   public int getItem() {return item;}
   public void setItem(int it) {item = it;}
 

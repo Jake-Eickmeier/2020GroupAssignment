@@ -65,11 +65,6 @@ public class Avatar{
     eye2.setStroke(Color.TRANSPARENT);
     eye2.setFill(Color.TRANSPARENT);
 
-    /*
-    Image imgEye = new Image("res/ey.png");
-    ImageView r1 = new ImageView(imgEye);
-    */
-
     int mindtemp = user.getMouthtype();
     int eindtemp = user.getEyetype();
     //create mouth objects
@@ -94,20 +89,6 @@ public class Avatar{
     imgEyeView.setFitHeight(40);
     imgEyeView.setFitWidth(100);
     this.checkIsGlasses();
-
-    /*
-    Rectangle r1 = new Rectangle(150,160,100,40);
-    r1.setStroke(Color.TRANSPARENT);
-    r1.setFill(Color.TRANSPARENT);
-    */
-
-    /*
-
-    Rectangle r2 = new Rectangle(170,210,60,30);
-    r2.setStroke(Color.BLUE);
-    r2.setFill(Color.BLUE);
-    */
-
   }
 
   private void checkIsGlasses() {
