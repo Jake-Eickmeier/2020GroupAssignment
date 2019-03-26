@@ -55,11 +55,6 @@ public class MainClass extends Application{
     UserFileAccess F = new UserFileAccess();
 
     UserClass userMain = makeUser("","#cc8099",1,1);
-    try{
-      userMain = F.GetInfo(1);
-    }catch (Exception ex){
-
-    }
 
     CurrentUser currUser = new CurrentUser(userMain);
 
