@@ -3,8 +3,8 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.paint.Color;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -16,7 +16,6 @@ import javafx.animation.*;
 
 public class MenuSelect implements Runnable{
   ImageView item1, item2, item3;
-  //
   Ellipse menuPath;
   ScaleTransition st1, st2, st3;
   PathTransition pt1, pt2, pt3;
@@ -29,10 +28,9 @@ public class MenuSelect implements Runnable{
 
   public MenuSelect(Pane p){
     pane = p;
-    menuPath = new Ellipse(200,300,50,200);
+    menuPath = new Ellipse(200, 300, 50, 200);
     menuPath.setFill(Color.TRANSPARENT);
     menuPath.setStroke(Color.TRANSPARENT);
-
 
     item1img = new Image("res/btnChat.png");
     item2img = new Image("res/btnCustomize.png");
@@ -104,61 +102,49 @@ public class MenuSelect implements Runnable{
     select.setCycleCount(1);
     ImageView[] temp = {item1,item2,item3};
     items = temp;
-
   }
-
-
 
   @Override
   public void run(){
-
     Platform.runLater(() -> {
-
       pane.getChildren().add(menuPath);
       pane.getChildren().add(item1);
       pane.getChildren().add(item2);
       pane.getChildren().add(item3);
       item2.toFront();
-
       pt1.play();
       st1.play();
-      try
-      {
+
+      try {
         Thread.sleep(1000);
-      }
-      catch(InterruptedException ex)
-      {
+      } catch (InterruptedException ex) {
         Thread.currentThread().interrupt();
       }
+
       pt2.play();
       st2.play();
-      try
-      {
+
+      try {
         Thread.sleep(1000);
-      }
-      catch(InterruptedException ex)
-      {
+      } catch(InterruptedException ex) {
         Thread.currentThread().interrupt();
       }
+
       pt3.play();
       st3.play();
 
       setup.play();
-
-
     });
   }
 
-  public int getISelect(){
-    return iSelect.getItem();
-  }
+  public int getISelect() {return iSelect.getItem();}
 
-  public void animateToNext(){
+  public void animateToNext() {
     select.play();
-      if (select.getCurrentTime() == Duration.seconds(0) && setup.getStatus() == Animation.Status.STOPPED){
-        iSelect.incItem();
-        items[iSelect.getItem()].toFront();
-      }
+    if (select.getCurrentTime() == Duration.seconds(0) && setup.getStatus() == Animation.Status.STOPPED) {
+      iSelect.incItem();
+      items[iSelect.getItem()].toFront();
+    }
   }
 
   public void ScaleSetup(ScaleTransition st, ImageView item) {
@@ -176,18 +162,14 @@ public class MenuSelect implements Runnable{
   }
 }
 
-
 class ItemSelect{
   int item;
-  public ItemSelect(){
-    item = 1;
-  }
-  public int getItem(){
-    return item;
-  }
-  public void setItem(int it){
-    item = it;
-  }
+
+  public ItemSelect() {item = 1;}
+  
+  public int getItem() {return item;}
+  public void setItem(int it) {item = it;}
+
   public void incItem(){
     item ++;
     if (item == 3){

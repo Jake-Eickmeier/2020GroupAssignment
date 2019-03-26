@@ -1,5 +1,5 @@
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,11 +8,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.input.KeyCode;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 
 public class Chat implements Runnable{
   private TextField tf = new TextField();
@@ -36,25 +36,11 @@ public class Chat implements Runnable{
 
     gridPane.add(tf, 0, 1);
 
-
     ScrollPane scrPane = new ScrollPane(ta);
     scrPane.setStyle("-fx-background-color: transparent;");
 
     gridPane.add(scrPane, 0, 0);
     pane.setCenter(gridPane);
-
-
-
-    /*
-    tf.setOnKeyPressed(new EventHandler<KeyEvent>() {
-      @Override
-      public void handle(KeyEvent ke) {
-        if (ke.getCode().equals(KeyCode.ESCAPE)) {
-          primaryStage.close();
-        }
-      }
-    });
-    */
   }
 
   public void run(){
@@ -64,5 +50,4 @@ public class Chat implements Runnable{
   public void killChat(){
     client.endClient();
   }
-
 }

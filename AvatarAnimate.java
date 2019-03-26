@@ -15,14 +15,14 @@ class AvatarAnimate implements Runnable{
   Pane pane;
   Pane getmousepane;
 
-  public AvatarAnimate(Avatar avt, Pane p,Pane x){
+  public AvatarAnimate(Avatar avt, Pane p, Pane x) {
     avtr = avt;
     pane = p;
     getmousepane = x;
   }
 
   @Override
-  public void run(){
+  public void run() {
     Platform.runLater(() -> {
       //add all avatar objects to pane
       pane.getChildren().add(avtr.getMainCircleArea());
@@ -46,15 +46,14 @@ class AvatarAnimate implements Runnable{
         //main x and y variables created
         int x, y;
 
-        if (dnorm >= avtr.getMainCircleArea().getRadius()){
+        if (dnorm >= avtr.getMainCircleArea().getRadius()) {
           //if mouse outside main circle make general position to max
           x = (int)(Math.floor(10*xu));
           y = (int)(Math.floor(10*yu));
-        }else{
+        } else {
           //if mouse inside main circle, make relatie position towards mouse
           x = (int)(Math.floor((dnorm*1/15)*xu));
           y = (int)(Math.floor((dnorm*1/15)*yu));
-
         }
 
         //move head inverse to mouse position
@@ -62,7 +61,6 @@ class AvatarAnimate implements Runnable{
         head.setCenterX(-x+avtr.getMainCircleArea().getCenterX());
         head.setCenterY(-y+avtr.getMainCircleArea().getCenterY());
         avtr.setHead(head);
-
 
         ImageView eyeimg = avtr.getImgEyeView();
         eyeimg.setX(x/2+avtr.getMainCircleArea().getCenterX()-50);
@@ -82,14 +80,15 @@ class AvatarAnimate implements Runnable{
         e2.setCenterY(y/2+avtr.getMainCircleArea().getCenterY()-20);
         avtr.setEye2(e2);
 
-        if (eyeimg.getY() < avtr.getCenterYMain()-40){
+        if (eyeimg.getY() < avtr.getCenterYMain()-40) {
           eyeimg.setFitHeight(40+(eyeimg.getY()-avtr.getCenterYMain()+40));
-        }else{
+        } else {
           eyeimg.setFitHeight(40);
         }
-        if (mouthimg.getY() > avtr.getCenterYMain()+10){
+
+        if (mouthimg.getY() > avtr.getCenterYMain()+10) {
           mouthimg.setFitHeight(30-(mouthimg.getY()-avtr.getCenterYMain()-10));
-        }else{
+        } else {
           mouthimg.setFitHeight(30);
         }
 
@@ -107,30 +106,31 @@ class AvatarAnimate implements Runnable{
     });
   }
 
-  public void setGetMousePane(Pane mpane){
+  public void setGetMousePane(Pane mpane) {
     getmousepane = mpane;
   }
-  private int[] place(int x, int y, Ellipse eye1, Ellipse eye2){
+
+  private int[] place(int x, int y, Ellipse eye1, Ellipse eye2) {
     double xd1 = (x-eye1.getCenterX()), yd1 = (y-eye1.getCenterY());
     double xd2 = (x-eye2.getCenterX()), yd2 = (y-eye2.getCenterY());
     double dnorm1 = Math.sqrt(Math.pow(xd1,2)+Math.pow(yd1,2));
-    double xu1 = xd1/dnorm1, yu1 = yd1/dnorm1;
     double dnorm2 = Math.sqrt(Math.pow(xd2,2)+Math.pow(yd2,2));
+    double xu1 = xd1/dnorm1, yu1 = yd1/dnorm1;
     double xu2 = xd2/dnorm2, yu2 = yd2/dnorm2;
     int ex1, ey1, ex2, ey2;
 
-    if (dnorm1 >= 25){
+    if (dnorm1 >= 25) {
       ex1 = (int)((Math.floor(12.5*xu1))+eye1.getCenterX());
       ey1 = (int)((Math.floor(12.5*yu1))+eye1.getCenterY());
-    }else{
+    } else {
       ex1 = (int)((Math.floor((dnorm1*1/2)*xu1))+eye1.getCenterX());
       ey1 = (int)((Math.floor((dnorm1*1/2)*yu1))+eye1.getCenterY());
     }
 
-    if (dnorm2 >= 25){
+    if (dnorm2 >= 25) {
       ex2 = (int)((Math.floor(12.5*xu2))+eye2.getCenterX());
       ey2 = (int)((Math.floor(12.5*yu2))+eye2.getCenterY());
-    }else{
+    } else {
       ex2 = (int)((Math.floor((dnorm2*1/2)*xu2))+eye2.getCenterX());
       ey2 = (int)((Math.floor((dnorm2*1/2)*yu2))+eye2.getCenterY());
     }

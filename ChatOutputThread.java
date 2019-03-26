@@ -13,13 +13,11 @@ import javafx.scene.input.KeyCode;
  */
 
 public class ChatOutputThread extends Thread {
-
 	private Socket socket;
 	private ChatClient client;
 	private PrintWriter writer;
   private TextArea ta;
   private TextField tf;
-
 
 	public ChatOutputThread(Socket socket, ChatClient client, TextArea ta, TextField tf) {
 		this.socket = socket;
