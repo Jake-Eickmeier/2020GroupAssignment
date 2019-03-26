@@ -40,7 +40,7 @@ class AvatarAnimate implements Runnable{
         double xd = (e.getX()-avtr.getMainCircleArea().getCenterX());
         double yd = (e.getY()-avtr.getMainCircleArea().getCenterY());
         //get euclidean vector norm from co-ordinates
-        double dnorm = Math.sqrt(Math.pow(xd,2)+Math.pow(yd,2));
+        double dnorm = Math.sqrt(Math.pow(xd, 2)+Math.pow(yd, 2));
         //create unit vector
         double xu = xd/dnorm, yu = yd/dnorm;
         //main x and y variables created
@@ -94,7 +94,7 @@ class AvatarAnimate implements Runnable{
 
         avtr.setImgMouthView(mouthimg);
 
-        int[] f = place((int)e.getX(),(int)e.getY(),e1,e2);
+        int[] f = place((int)e.getX(),(int)e.getY(), e1, e2);
         Circle pup1 = avtr.getPupil1(), pup2 = avtr.getPupil2();
         pup1.setCenterX(f[0]);
         pup1.setCenterY(f[1]);
@@ -113,8 +113,8 @@ class AvatarAnimate implements Runnable{
   private int[] place(int x, int y, Ellipse eye1, Ellipse eye2) {
     double xd1 = (x-eye1.getCenterX()), yd1 = (y-eye1.getCenterY());
     double xd2 = (x-eye2.getCenterX()), yd2 = (y-eye2.getCenterY());
-    double dnorm1 = Math.sqrt(Math.pow(xd1,2)+Math.pow(yd1,2));
-    double dnorm2 = Math.sqrt(Math.pow(xd2,2)+Math.pow(yd2,2));
+    double dnorm1 = Math.sqrt(Math.pow(xd1, 2)+Math.pow(yd1, 2));
+    double dnorm2 = Math.sqrt(Math.pow(xd2, 2)+Math.pow(yd2, 2));
     double xu1 = xd1/dnorm1, yu1 = yd1/dnorm1;
     double xu2 = xd2/dnorm2, yu2 = yd2/dnorm2;
     int ex1, ey1, ex2, ey2;
@@ -135,7 +135,7 @@ class AvatarAnimate implements Runnable{
       ey2 = (int)((Math.floor((dnorm2*1/2)*yu2))+eye2.getCenterY());
     }
 
-    int [] full = {ex1,ey1,ex2,ey2};
+    int [] full = {ex1, ey1, ex2, ey2};
     return full;
   }
 }

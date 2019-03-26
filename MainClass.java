@@ -59,24 +59,9 @@ public class MainClass extends Application{
 
     new Thread(new AvatarAnimate(new Avatar(200, 300, currUser.getCurrentUser()), aviPane, menuMain)).start();
 
-    /*
-    Avatar avt2 = new Avatar(200,400);
-    AvatarAnimate ani2 = new AvatarAnimate(avt2, aviPane);
-    Thread t3 = new Thread(ani2);
-    */
-
-    /*t3.start();
-    */
-
     MenuSelect selectMain = new MenuSelect(selectPane);
     Thread tMainSel = new Thread(selectMain);
     tMainSel.start();
-
-    /*Circle temp = avt1.getMainCircleArea();
-    temp.setCenterX(90);
-    avt1.setMainCircleArea(temp);
-    System.out.println(avt1.getMainCircleArea().getCenterX());
-    */
 
     menuMain.setLeft(aviPane);
     menuMain.setCenter(selectPane);
@@ -99,21 +84,11 @@ public class MainClass extends Application{
 
     btnExit.setOnAction(e -> {
       if (primaryStage.getScene() != mainMenuScene) {
-        /*
-        if(primaryStage.getScene() == serverScene){
-          chat1.killChat();
-        }
-        */
         menuMain.setLeft(aviPane);
         aviPane.getChildren().clear();
         Avatar avtMain = new Avatar(200, 300, currUser.getCurrentUser());
         AvatarAnimate aniMain = new AvatarAnimate(avtMain, aviPane, menuMain);
         new Thread(aniMain).start();
-        //new Thread(aniMain).start();
-        /*System.out.println(tMainAvi.isAlive());
-        System.out.println(tMainAvi.isInterrupted());
-        tMainAvi.start();
-        */
         primaryStage.setScene(mainMenuScene);
       }
     });
@@ -123,18 +98,6 @@ public class MainClass extends Application{
       serverMain.setBottom(exiPane);
       aviPane.getChildren().clear();
 
-      /*
-      Pane aviPaneOther = new Pane();
-      aviPaneOther.setStyle("-fx-background-color: transparent;");
-
-
-      Avatar avtServOther = new Avatar(100,300,currUser.getCurrentUser());
-      AvatarAnimate aniServOther = new AvatarAnimate(avtServOther, aviPaneOther,serverMain);
-      Thread tServOther = new Thread(aniServOther);
-      tServOther.start();
-
-      serverMain.setRight(aviPaneOther);
-      */
       Avatar avtServUser = new Avatar(100,300,currUser.getCurrentUser());
       AvatarAnimate aniServUser = new AvatarAnimate(avtServUser, aviPane,serverMain);
       Thread tServUser = new Thread(aniServUser);
@@ -151,17 +114,6 @@ public class MainClass extends Application{
       serverMain.setBottom(exiPane);
       aviPane.getChildren().clear();
 
-      /*
-      Pane aviPaneOther = new Pane();
-      aviPaneOther.setStyle("-fx-background-color: transparent;");
-
-      Avatar avtServOther = new Avatar(100,300,currUser.getCurrentUser());
-      AvatarAnimate aniServOther = new AvatarAnimate(avtServOther, aviPaneOther,serverMain);
-      Thread tServOther = new Thread(aniServOther);
-      tServOther.start();
-
-      serverMain.setRight(aviPaneOther);
-      */
       Avatar avtServUser = new Avatar(100,300,currUser.getCurrentUser());
       AvatarAnimate aniServUser = new AvatarAnimate(avtServUser, aviPane, serverMain);
       Thread tServUser = new Thread(aniServUser);
@@ -179,7 +131,6 @@ public class MainClass extends Application{
           selectMain.animateToNext();
           break;
         }
-
         case ENTER: {
           if (selectMain.getISelect() == 1) {
             customizeMain.setLeft(aviPane);

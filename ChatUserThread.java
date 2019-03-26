@@ -54,7 +54,6 @@ public class ChatUserThread extends Thread {
 		}
 	}
 
-
 	//Sends a list of online users to the newly connected user.
 	void printUsers() {
 		if (server.hasUsers()) {

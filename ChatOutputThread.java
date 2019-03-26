@@ -47,16 +47,8 @@ public class ChatOutputThread extends Thread {
             tf.clear();
           }
         }
-      });/*
-      tf.setOnKeyPressed(new EventHandler<KeyEvent>() {
-        @Override
-        public void handle(KeyEvent ke) {
-          if (ke.getCode().equals(KeyCode.ESCAPE)) {
-            p.setVisible(false);
-          }
-        }
-      });*/
-		} while (tf.isVisible() == true);	//TODO: Can obviously customize this if desired or change to event (e.g. pressing 'esc' key)
+      });
+		} while (tf.isVisible() == true);
 
 		try {
 			socket.close();		//After the chat exchange is finished, close the socket
