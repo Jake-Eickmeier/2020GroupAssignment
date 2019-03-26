@@ -1,0 +1,15 @@
+plugins {
+  id 'java'
+  id 'application'
+}
+
+mainClassName = 'MainClass'
+
+repositories{
+  mavenCentral()
+}
+
+jar{
+  manifest.attributes "Main-Class": "src/main/java/MainClass"
+
+}
