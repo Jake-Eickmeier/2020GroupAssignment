@@ -22,7 +22,7 @@ To converse with another client, run another instance of the program in a differ
 similarly to the above instructions and create a username, but this time join a chat instead of creating one!
 You will now be able to freely talk between each other :).
 
-### Contributions by member:
+## **Contributions by member:**
 
 **Connor Robertson** - Responsible for creating the binary i/o system and User class
 
