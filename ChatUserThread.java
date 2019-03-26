@@ -40,7 +40,7 @@ public class ChatUserThread extends Thread {
 				serverMessage = "[" + userName + "]: " + clientMessage;
 				server.broadcast(serverMessage);
 
-			} while (!clientMessage.equals("bye"));		//TODO: once again, can customize this to 'esc' key etc if desired
+			} while (!clientMessage.equals("bye"));
 
 			server.removeUser(userName, this);
 			socket.close();

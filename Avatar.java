@@ -10,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Avatar{
-
   //mouth and  eye objects
   Image imgMouth;
   ImageView imgMouthView;
@@ -34,7 +33,7 @@ public class Avatar{
   UserClass user;
 
 
-  public Avatar(double mainX, double mainY, UserClass us){
+  public Avatar(double mainX, double mainY, UserClass us) {
     //set main avatar origin
     centerXMain = mainX;
     centerYMain = mainY;
@@ -82,11 +81,12 @@ public class Avatar{
     imgMouthView.setFitWidth(60);
 
     //create eye objects
-    if (eindtemp >= 4){
+    if (eindtemp >= 4) {
       isGlasses = true;
-    }else{
+    } else {
       isGlasses = false;
     }
+
     imgEye = new Image("res/e" + eindtemp + ".png");
     imgEyeView  = new ImageView(imgEye);
     imgEyeView.setX(centerXMain-50);
@@ -110,109 +110,62 @@ public class Avatar{
 
   }
 
-  private void checkIsGlasses(){
+  private void checkIsGlasses() {
     //if avatar eyes block pupils make pupils transparent
     if (isGlasses == false){
       pupil1.setFill(Color.BLACK);
       pupil2.setFill(Color.BLACK);
-    }else{
+    } else {
       pupil1.setFill(Color.TRANSPARENT);
       pupil2.setFill(Color.TRANSPARENT);
     }
   }
 
+  public Circle getHead() {return head;}
+  public Ellipse getEye1() {return eye1;}
+  public Ellipse getEye2() {return eye2;}
+  public Circle getPupil1() {return pupil1;}
+  public Circle getPupil2() {return pupil2;}
+  public Circle getMainCircleArea() {return mainCircleArea;}
+  public ImageView getImgMouthView() {return imgMouthView;}
+  public ImageView getImgEyeView() {return imgEyeView;}
+  public double getCenterXMain() {return centerXMain;}
+  public double getCenterYMain() {return centerYMain;}
 
-
-  public Circle getHead(){
-    return head;
-  }
-  public Ellipse getEye1(){
-    return eye1;
-  }
-  public Ellipse getEye2(){
-    return eye2;
-  }
-  public Circle getPupil1(){
-    return pupil1;
-  }
-  public Circle getPupil2(){
-    return pupil2;
-  }
-  public Circle getMainCircleArea(){
-    return mainCircleArea;
-  }
-  public ImageView getImgMouthView(){
-    return imgMouthView;
-  }
-  public ImageView getImgEyeView(){
-    return imgEyeView;
-  }
-  public double getCenterXMain(){
-    return centerXMain;
-  }
-  public double getCenterYMain(){
-    return centerYMain;
-  }
-
-
-
-
-  public void setIsGlasses(Boolean isg){
+  public void setIsGlasses(Boolean isg) {
     //set IsGlasses
     isGlasses = isg;
     this.checkIsGlasses();
   }
-
-  public void setHead(Circle h){
-    head = h;
-  }
-  public void setEye1(Ellipse e1){
-    eye1 = e1;
-  }
-  public void setEye2(Ellipse e2){
-    eye2 = e2;
-  }
-  public void setPupil1(Circle p1){
-    pupil1 = p1;
-  }
-  public void setPupil2(Circle p2){
-    pupil2 = p2;
-  }
-  public void setMainCircleArea(Circle mca){
-    mainCircleArea = mca;
-  }
-  public void setImgMouthView(ImageView imv){
-    imgMouthView = imv;
-  }
-  public void setImgEyeView(ImageView imv){
-    imgEyeView = imv;
-  }
-  public void setImgMouth(Image imv){
+  public void setHead(Circle h) {head = h;}
+  public void setEye1(Ellipse e1) {eye1 = e1;}
+  public void setEye2(Ellipse e2) {eye2 = e2;}
+  public void setPupil1(Circle p1) {pupil1 = p1;}
+  public void setPupil2(Circle p2) {pupil2 = p2;}
+  public void setMainCircleArea(Circle mca) {mainCircleArea = mca;}
+  public void setImgMouthView(ImageView imv) {imgMouthView = imv;}
+  public void setImgEyeView(ImageView imv) {imgEyeView = imv;}
+  public void setImgMouth(Image imv) {
     imgMouth = imv;
     //also change imageview to new image
     this.getImgMouthView().setImage(imgMouth);
   }
-  public void setImgEye(Image imv){
+  public void setImgEye(Image imv) {
     imgEye = imv;
     //also change imageview to new image
     this.getImgEyeView().setImage(imgEye);
   }
-  public void setColor(Color color){
+  public void setColor(Color color) {
     col = color;
     //also change colour to new colour
     head.setFill(col);
   }
-
   public void setUser(UserClass us){
     this.user = us;
     this.setColor(Color.web(user.getColour()));
     int mindtemp = user.getMouthtype();
     int eindtemp = user.getEyetype();
-    this.setImgMouth(new Image(String.format("res/m%d.png",mindtemp)));
-    this.setImgEye(new Image(String.format("res/e%d.png",eindtemp)));
-
+    this.setImgMouth(new Image(String.format("res/m%d.png", mindtemp)));
+    this.setImgEye(new Image(String.format("res/e%d.png", eindtemp)));
   }
-
-
-
 }
