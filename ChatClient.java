@@ -58,23 +58,18 @@ public class ChatClient {
 		} catch (IOException ex) {
 			ta.appendText("I/O Error: " + ex.getMessage() + "\n");
 		}
-
 	}
-	public void endClient(){
+
+	public void endClient() {
 		try{
 			socket.close();
-		}catch(Exception ex){
-
+		} catch (Exception ex) {
+			
 		}
 	}
 
-	void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	String getUserName() {
-		return this.userName;
-	}
+	void setUserName(String userName) {this.userName = userName;}
+	String getUserName() {return this.userName;}
 
 	//TODO: When implementing this, we will want to remove this main method and
 	//instead create a new chat client (and execute it) from the events/triggers

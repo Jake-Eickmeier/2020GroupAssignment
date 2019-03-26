@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
  */
 
 public class ChatInputThread extends Thread {
-
 	private Socket socket;
 	private ChatClient client;
 	private BufferedReader reader;
@@ -35,11 +34,8 @@ public class ChatInputThread extends Thread {
   public void run() {
 		while (true) {
 			try {
-				//TODO: We will need to change this to display to game window instead of console
-
 				String response = reader.readLine();
 				ta.appendText("\n" + response);
-
 			} catch (IOException ex) {
 				System.out.println("Error reading from server: " + ex.getMessage());
 				ex.printStackTrace();

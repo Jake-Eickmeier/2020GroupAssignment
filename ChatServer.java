@@ -10,7 +10,6 @@ import java.util.*;
  */
 
 public class ChatServer {
-
 	private int port;
 	private Set<String> userNames = new HashSet<>();
 	private Set<ChatUserThread> chatUserThreads = new HashSet<>();
@@ -73,12 +72,10 @@ public class ChatServer {
     }
   }
 
-
 	//Stores username of the newly connected client.
 	void addUserName(String userName) {
 		userNames.add(userName);
 	}
-
 
 	//When a client is disconneted, removes the associated username and ChatUserThread
 	void removeUser(String userName, ChatUserThread aUser) {
